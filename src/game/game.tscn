@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dev1px1upwh0p"]
 
 [ext_resource type="Script" uid="uid://dt4oq58gly56u" path="res://src/game/game.gd" id="1_qnjlk"]
+[ext_resource type="PackedScene" uid="uid://cdcx266qq3g4k" path="res://src/game/wall.tscn" id="2_kgj8g"]
 [ext_resource type="Script" uid="uid://b7vo03ppvyatm" path="res://src/game/player.gd" id="2_s6lek"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7grgb"]
@@ -13,7 +14,7 @@ background_mode = 2
 sky = SubResource("Sky_xxpmf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2wf1j"]
-size = Vector3(30, 1, 30)
+size = Vector3(31, 1, 31)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xxpmf"]
 radius = 0.3
@@ -25,6 +26,8 @@ height = 1.7
 
 [node name="Game" type="Node3D" unique_id=1433563188]
 script = ExtResource("1_qnjlk")
+grid_size = 15
+wall_scene = ExtResource("2_kgj8g")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1123099634]
 environment = SubResource("Environment_2wf1j")
@@ -32,13 +35,13 @@ environment = SubResource("Environment_2wf1j")
 [node name="Ground" type="StaticBody3D" parent="." unique_id=875011244]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Ground" unique_id=1619211704]
-size = Vector3(30, 1, 30)
+size = Vector3(31, 1, 31)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=492991978]
 shape = SubResource("BoxShape3D_2wf1j")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1055311836]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 script = ExtResource("2_s6lek")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1601802118]
@@ -56,3 +59,5 @@ current = true
 [node name="SunLight" type="DirectionalLight3D" parent="." unique_id=1033124553]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 32, 32)
 shadow_enabled = true
+
+[node name="Walls" type="Node3D" parent="." unique_id=581190974]

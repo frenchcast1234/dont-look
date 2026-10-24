@@ -1,5 +1,8 @@
 extends Node3D
 
+@export var grid_size: int = 30
+@export var wall_scene: PackedScene
+
 func generate_grid(size: int) -> Array:
 	var grid := []
 	var nb: int = 0
@@ -50,4 +53,15 @@ func generate_grid(size: int) -> Array:
 	return grid
 
 func _ready() -> void:
-	var grid := generate_grid(10)
+	var grid := generate_grid(grid_size)
+	for i in range(grid_size * 2 + 1):
+		for j in range(grid_size * 2 + 1):
+			if grid[i][j] != -1:
+				continue
+			var wall: StaticBody3D = wall_scene.instantiate()
+			wall.position = Vector3(
+				i - grid_size,
+				1.5,
+				j - grid_size
+			)
+			$Walls.add_child(wall)
