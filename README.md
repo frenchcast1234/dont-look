@@ -8,7 +8,7 @@ Si le monstre le voit, il meurt.
 
 ## TODO
 - [x] Vue première personne
-- [ ] Laryrinthe généré aléatoirement
+- [x] Laryrinthe généré aléatoirement
 - [ ] Objets à collecter
 - [ ] Monstre
 - [ ] Système d'étapes

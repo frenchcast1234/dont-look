@@ -2,8 +2,11 @@ extends Node3D
 
 @export var grid_size: int = 30
 @export var wall_scene: PackedScene
+@export var object_scene: PackedScene
+var collected: int = 0
+var to_collect: int = 5
 
-func generate_grid(size: int) -> Array:
+func generate_grid(size: int, objects: int) -> Array:
 	var grid := []
 	var nb: int = 0
 	
@@ -50,18 +53,41 @@ func generate_grid(size: int) -> Array:
 				if row[k] == nb:
 					row[k] = grid[x][y]
 		types -= 1
+	
+	var placed: int = 0
+	while placed < objects:
+		var x: int = (randi() % (size * 2 - 1)) + 1
+		var y: int = (randi() % (size * 2 - 1)) + 1
+		if grid[x][y] == -1 or grid[x][y] == -2:
+			continue
+		grid[x][y] = -2
+		placed += 1
+	
 	return grid
 
 func _ready() -> void:
-	var grid := generate_grid(grid_size)
+	var grid := generate_grid(grid_size, to_collect)
 	for i in range(grid_size * 2 + 1):
 		for j in range(grid_size * 2 + 1):
-			if grid[i][j] != -1:
-				continue
-			var wall: StaticBody3D = wall_scene.instantiate()
-			wall.position = Vector3(
-				i - grid_size,
-				1.5,
-				j - grid_size
-			)
-			$Walls.add_child(wall)
+			if grid[i][j] == -1:
+				var wall: StaticBody3D = wall_scene.instantiate()
+				wall.position = Vector3(
+					i - grid_size,
+					1.5,
+					j - grid_size
+				)
+				$Walls.add_child(wall)
+			elif grid[i][j] == -2:
+				var obj: StaticBody3D = object_scene.instantiate()
+				obj.position = Vector3(
+					i - grid_size,
+					1.5,
+					j - grid_size
+				)
+				$Objects.add_child(obj)
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("obj"):
+		body.queue_free()
+		collected += 1
+		$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dt4oq58gly56u" path="res://src/game/game.gd" id="1_qnjlk"]
 [ext_resource type="PackedScene" uid="uid://cdcx266qq3g4k" path="res://src/game/wall.tscn" id="2_kgj8g"]
 [ext_resource type="Script" uid="uid://b7vo03ppvyatm" path="res://src/game/player.gd" id="2_s6lek"]
+[ext_resource type="PackedScene" uid="uid://ps2a16r6cmep" path="res://src/game/object.tscn" id="3_l80un"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7grgb"]
 
@@ -28,6 +29,7 @@ height = 1.7
 script = ExtResource("1_qnjlk")
 grid_size = 15
 wall_scene = ExtResource("2_kgj8g")
+object_scene = ExtResource("3_l80un")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1123099634]
 environment = SubResource("Environment_2wf1j")
@@ -56,8 +58,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5528016, 0)
 [node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=1084425687]
 current = true
 
+[node name="Area3D" type="Area3D" parent="Player" unique_id=435008132]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D" unique_id=197309040]
+shape = SubResource("CapsuleShape3D_xxpmf")
+
 [node name="SunLight" type="DirectionalLight3D" parent="." unique_id=1033124553]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 32, 32)
 shadow_enabled = true
 
 [node name="Walls" type="Node3D" parent="." unique_id=581190974]
+
+[node name="Objects" type="Node3D" parent="." unique_id=64769581]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=328419459]
+
+[node name="Collected" type="Label" parent="CanvasLayer" unique_id=378927734]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -389.5
+offset_right = 389.5
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Player/Area3D" to="." method="_on_area_3d_body_entered"]

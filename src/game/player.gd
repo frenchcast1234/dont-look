@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var speed: float = 280
 @export var mouse_sensitivity: float = 0.005
-@export var jump_velocity: float = 280
+@export var jump_velocity: float = 600
 @export var gravity: float = 9.8
 
 var head: Node3D

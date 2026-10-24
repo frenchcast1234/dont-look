@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ps2a16r6cmep"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxpmf"]
+albedo_color = Color(1, 1, 0.26666668, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2wf1j"]
+radius = 0.25
+
+[node name="Object" type="StaticBody3D" unique_id=1637770372 groups=["obj"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1169028938]
+radius = 0.25
+material = SubResource("StandardMaterial3D_xxpmf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1631963203]
+shape = SubResource("SphereShape3D_2wf1j")
