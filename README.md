@@ -10,7 +10,7 @@ Si le monstre le voit, il meurt.
 - [x] Vue première personne
 - [x] Laryrinthe généré aléatoirement
 - [x] Objets à collecter
-- [ ] Monstre
+- [x] Monstre
 - [ ] Système d'étapes
 - [ ] Faire un menu
 

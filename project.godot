@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="dont-look"
-run/main_scene="uid://dev1px1upwh0p"
+run/main_scene="uid://bb2u75utxppt7"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

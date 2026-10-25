@@ -64,17 +64,26 @@ func generate_grid(size: int, objects: int) -> Array:
 		placed += 1
 		
 	while true:
-		var x: int = (randi() % (size * 2 - 1)) + 1
-		var y: int = (randi() % (size * 2 - 1)) + 1
+		var x: int = (randi() % (size - 1)) + 1
+		var y: int = (randi() % (size - 1)) + 1
 		if grid[x][y] < 0:
 			continue
 		grid[x][y] = -3
+		break
+		
+	while true:
+		var x: int = (randi() % (size - 1)) + 1 + size
+		var y: int = (randi() % (size - 1)) + 1 + size
+		if grid[x][y] < 0:
+			continue
+		grid[x][y] = -4
 		break
 	
 	return grid
 
 func _ready() -> void:
 	$Monster.game_over.connect(func():
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		$CanvasLayer/GameOver.visible = true
 		get_tree().paused = true
 	)
@@ -99,6 +108,12 @@ func _ready() -> void:
 				$Objects.add_child(obj)
 			elif grid[i][j] == -3:
 				$Monster.position = Vector3(
+					i - grid_size,
+					4,
+					j - grid_size
+				)
+			elif grid[i][j] == -4:
+				$Player.position = Vector3(
 					i - grid_size,
 					4,
 					j - grid_size

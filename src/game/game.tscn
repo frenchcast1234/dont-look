@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b7vo03ppvyatm" path="res://src/game/player.gd" id="2_s6lek"]
 [ext_resource type="PackedScene" uid="uid://ps2a16r6cmep" path="res://src/game/object.tscn" id="3_l80un"]
 [ext_resource type="Script" uid="uid://c6bi0g47meyy0" path="res://src/game/monster.gd" id="5_xptat"]
+[ext_resource type="Script" uid="uid://d1c0dc6gtgswk" path="res://src/game/game_over.gd" id="5_yarin"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7grgb"]
 
@@ -103,23 +104,49 @@ text = "0/0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameOver" type="Label" parent="CanvasLayer" unique_id=460498324]
+[node name="GameOver" type="Control" parent="CanvasLayer" unique_id=228717553]
 visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_yarin")
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOver" unique_id=460498324]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -353.5
+offset_top = -187.5
+offset_right = 353.5
+offset_bottom = -12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 128
 text = "Game over!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/GameOver" unique_id=168293643]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -313.5
+offset_top = 8.5
+offset_right = 313.5
+offset_bottom = 191.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 128
+text = "    Menu    "
 
 [node name="Monster" type="CharacterBody3D" parent="." unique_id=2870589]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -154,10 +181,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3802266, 0)
 target_position = Vector3(0, 0, -100)
 collision_mask = 8
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="Wait" type="Timer" parent="Monster" unique_id=106982605]
 wait_time = 0.205
 
+[node name="CSGBox3D" type="CSGBox3D" parent="Monster" unique_id=1261711669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+size = Vector3(0.1, 10, 0.1)
+
 [connection signal="body_entered" from="Player/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="pressed" from="CanvasLayer/GameOver/Button" to="CanvasLayer/GameOver" method="_on_button_pressed"]
 [connection signal="timeout" from="Monster/Wait" to="Monster" method="_on_wait_timeout"]
