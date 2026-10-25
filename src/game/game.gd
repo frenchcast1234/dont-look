@@ -58,14 +58,26 @@ func generate_grid(size: int, objects: int) -> Array:
 	while placed < objects:
 		var x: int = (randi() % (size * 2 - 1)) + 1
 		var y: int = (randi() % (size * 2 - 1)) + 1
-		if grid[x][y] == -1 or grid[x][y] == -2:
+		if grid[x][y] < 0:
 			continue
 		grid[x][y] = -2
 		placed += 1
+		
+	while true:
+		var x: int = (randi() % (size * 2 - 1)) + 1
+		var y: int = (randi() % (size * 2 - 1)) + 1
+		if grid[x][y] < 0:
+			continue
+		grid[x][y] = -3
+		break
 	
 	return grid
 
 func _ready() -> void:
+	$Monster.game_over.connect(func():
+		$CanvasLayer/GameOver.visible = true
+		get_tree().paused = true
+	)
 	var grid := generate_grid(grid_size, to_collect)
 	for i in range(grid_size * 2 + 1):
 		for j in range(grid_size * 2 + 1):
@@ -81,10 +93,16 @@ func _ready() -> void:
 				var obj: StaticBody3D = object_scene.instantiate()
 				obj.position = Vector3(
 					i - grid_size,
-					1.5,
+					1,
 					j - grid_size
 				)
 				$Objects.add_child(obj)
+			elif grid[i][j] == -3:
+				$Monster.position = Vector3(
+					i - grid_size,
+					4,
+					j - grid_size
+				)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("obj"):

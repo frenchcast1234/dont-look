@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cdcx266qq3g4k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2wf1j"]
+size = Vector3(1, 2, 1)
 
 [node name="Wall" type="StaticBody3D" unique_id=574346183]
+collision_layer = 5
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=357478703]
 size = Vector3(1, 2, 1)
