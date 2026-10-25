@@ -116,37 +116,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_yarin")
 
-[node name="Label" type="Label" parent="CanvasLayer/GameOver" unique_id=460498324]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOver" unique_id=480544997]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -353.5
-offset_top = -187.5
-offset_right = 353.5
-offset_bottom = -12.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 128
+mouse_filter = 2
+alignment = 1
+
+[node name="GameOver" type="Label" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=460498324]
+layout_mode = 2
+theme_override_font_sizes/font_size = 256
 text = "Game over!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/GameOver" unique_id=168293643]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -313.5
-offset_top = 8.5
-offset_right = 313.5
-offset_bottom = 191.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Rounds" type="Label" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=1141440978]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Rounds: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=168293643]
+layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "    Menu    "
 
@@ -188,5 +189,5 @@ collide_with_areas = true
 wait_time = 0.205
 
 [connection signal="body_entered" from="Player/Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="pressed" from="CanvasLayer/GameOver/Button" to="CanvasLayer/GameOver" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/Button" to="CanvasLayer/GameOver" method="_on_button_pressed"]
 [connection signal="timeout" from="Monster/Wait" to="Monster" method="_on_wait_timeout"]

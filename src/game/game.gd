@@ -5,6 +5,7 @@ var grid_size: int = 15
 @export var object_scene: PackedScene
 var collected: int = 0
 var to_collect: int = 5
+var rounds: int = 1
 
 func generate_grid(size: int, is_complex: bool, objects: int) -> Array:
 	var grid := []
@@ -93,13 +94,21 @@ func generate_grid(size: int, is_complex: bool, objects: int) -> Array:
 	return grid
 
 func _ready() -> void:
+	$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
 	$Monster.game_over.connect(func():
+		print("game over")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		$Player/Head.is_dead = true
 		$Player/Head.target = $Monster.global_position
 		$CanvasLayer/GameOver.visible = true
+		$CanvasLayer/GameOver/VBoxContainer/Rounds.text = "Rounds: %d" % rounds
 		get_tree().paused = true
 	)
+	create()
+
+func create() -> void:
+	for child in $Walls.get_children():
+		child.queue_free()
 	var grid := generate_grid(grid_size, true, to_collect)
 	$Ground/CSGBox3D.size = Vector3(
 		grid_size * 2 + 1,
@@ -141,9 +150,18 @@ func _ready() -> void:
 					4,
 					j - grid_size
 				)
+				$Player.velocity = Vector3.ZERO
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("obj"):
 		body.queue_free()
 		collected += 1
 		$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
+		if collected >= to_collect:
+			grid_size += 5
+			rounds += 1
+			to_collect += 1
+			collected = 0
+			get_tree().paused = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			create()
