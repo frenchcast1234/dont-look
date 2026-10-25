@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var grid_size: int = 30
+var grid_size: int = 15
 @export var wall_scene: PackedScene
 @export var object_scene: PackedScene
 var collected: int = 0
@@ -90,8 +90,18 @@ func _ready() -> void:
 		get_tree().paused = true
 	)
 	var grid := generate_grid(grid_size, to_collect)
-	for i in range(grid_size * 2 + 1):
-		for j in range(grid_size * 2 + 1):
+	$Ground/CSGBox3D.size = Vector3(
+		grid_size * 2 + 1,
+		1,
+		grid_size * 2 + 1
+	)
+	$Ground/CollisionShape3D.shape.size = Vector3(
+		grid_size * 2 + 1,
+		1,
+		grid_size * 2 + 1
+	)
+	for i in range(grid.size()):
+		for j in range(grid[0].size()):
 			if grid[i][j] == -1:
 				var wall: StaticBody3D = wall_scene.instantiate()
 				wall.position = Vector3(

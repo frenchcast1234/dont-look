@@ -42,7 +42,6 @@ height = 1.8
 
 [node name="Game" type="Node3D" unique_id=1433563188]
 script = ExtResource("1_qnjlk")
-grid_size = 15
 wall_scene = ExtResource("2_kgj8g")
 object_scene = ExtResource("3_l80un")
 
