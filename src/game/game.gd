@@ -84,6 +84,8 @@ func generate_grid(size: int, objects: int) -> Array:
 func _ready() -> void:
 	$Monster.game_over.connect(func():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		$Player/Head.is_dead = true
+		$Player/Head.target = $Monster.global_position
 		$CanvasLayer/GameOver.visible = true
 		get_tree().paused = true
 	)

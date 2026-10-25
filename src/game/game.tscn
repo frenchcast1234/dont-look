@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cdcx266qq3g4k" path="res://src/game/wall.tscn" id="2_kgj8g"]
 [ext_resource type="Script" uid="uid://b7vo03ppvyatm" path="res://src/game/player.gd" id="2_s6lek"]
 [ext_resource type="PackedScene" uid="uid://ps2a16r6cmep" path="res://src/game/object.tscn" id="3_l80un"]
+[ext_resource type="Script" uid="uid://88j67tdabnsf" path="res://src/game/head.gd" id="5_jhw8o"]
 [ext_resource type="Script" uid="uid://c6bi0g47meyy0" path="res://src/game/monster.gd" id="5_xptat"]
 [ext_resource type="Script" uid="uid://d1c0dc6gtgswk" path="res://src/game/game_over.gd" id="5_yarin"]
 
@@ -68,7 +69,9 @@ shape = SubResource("CapsuleShape3D_xxpmf")
 mesh = SubResource("CapsuleMesh_2wf1j")
 
 [node name="Head" type="Node3D" parent="Player" unique_id=1081969754]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5528016, 0)
+script = ExtResource("5_jhw8o")
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=1084425687]
 current = true
@@ -184,10 +187,6 @@ collide_with_areas = true
 
 [node name="Wait" type="Timer" parent="Monster" unique_id=106982605]
 wait_time = 0.205
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Monster" unique_id=1261711669]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-size = Vector3(0.1, 10, 0.1)
 
 [connection signal="body_entered" from="Player/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/GameOver/Button" to="CanvasLayer/GameOver" method="_on_button_pressed"]
