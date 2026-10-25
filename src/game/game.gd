@@ -6,7 +6,7 @@ var grid_size: int = 15
 var collected: int = 0
 var to_collect: int = 5
 
-func generate_grid(size: int, objects: int) -> Array:
+func generate_grid(size: int, is_complex: bool, objects: int) -> Array:
 	var grid := []
 	var nb: int = 0
 	
@@ -54,6 +54,17 @@ func generate_grid(size: int, objects: int) -> Array:
 					row[k] = grid[x][y]
 		types -= 1
 	
+	if is_complex:
+		var complexed: int = 0
+		while complexed < size / 2:
+			var x: int = (randi() % (size * 2 - 1)) + 1
+			var y: int = (randi() % (size * 2 - 1)) + 1
+			if grid[x][y] != -1: continue
+			if (grid[x-1][y] == -1 and grid[x+1][y] == -1 and grid[x][y-1] != -1 and grid[x][y+1] != -1) or\
+			(grid[x][y-1] == -1 and grid[x][y+1] == -1 and grid[x-1][y] != -1 and grid[x+1][y] != -1):
+				grid[x][y] = 0
+				complexed += 1
+	
 	var placed: int = 0
 	while placed < objects:
 		var x: int = (randi() % (size * 2 - 1)) + 1
@@ -89,7 +100,7 @@ func _ready() -> void:
 		$CanvasLayer/GameOver.visible = true
 		get_tree().paused = true
 	)
-	var grid := generate_grid(grid_size, to_collect)
+	var grid := generate_grid(grid_size, true, to_collect)
 	$Ground/CSGBox3D.size = Vector3(
 		grid_size * 2 + 1,
 		1,
