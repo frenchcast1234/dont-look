@@ -28,6 +28,30 @@ height = 1.7
 radius = 0.3
 height = 1.7
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wf1j"]
+bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.14509805, 0.12941177, 0.16470589, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sblgy"]
+bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.29411766, 0.105882354, 0.050980393, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxpmf"]
 albedo_color = Color(0.6039216, 0.20392157, 0.8784314, 1)
 
@@ -101,6 +125,7 @@ offset_left = -389.5
 offset_right = 389.5
 offset_bottom = 101.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
 theme_override_font_sizes/font_size = 64
 text = "0/0"
 horizontal_alignment = 1
@@ -123,32 +148,61 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -815.0
+offset_top = -306.5
+offset_right = 815.0
+offset_bottom = 306.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="GameOver" type="Label" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=460498324]
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=1620619952]
 layout_mode = 2
-theme_override_font_sizes/font_size = 256
-text = "Game over!"
+theme_override_colors/default_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 200
+theme_override_font_sizes/normal_font_size = 240
+bbcode_enabled = true
+text = "[shake rate=60.0 level=15 connected=1]Game over[/shake]"
+fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Spacer" type="Control" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=512980610]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
 [node name="Rounds" type="Label" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=1141440978]
 layout_mode = 2
-theme_override_font_sizes/font_size = 96
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 128
 text = "Rounds: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=168293643]
-layout_mode = 2
+[node name="Button" type="Button" parent="CanvasLayer/GameOver" unique_id=168293643]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -376.5
+offset_top = -240.0
+offset_right = 376.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "    Menu    "
 
 [node name="Monster" type="CharacterBody3D" parent="." unique_id=2870589]
@@ -189,5 +243,5 @@ collide_with_areas = true
 wait_time = 0.205
 
 [connection signal="body_entered" from="Player/Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/Button" to="CanvasLayer/GameOver" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/Button" to="CanvasLayer/GameOver" method="_on_button_pressed"]
 [connection signal="timeout" from="Monster/Wait" to="Monster" method="_on_wait_timeout"]

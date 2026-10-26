@@ -11,12 +11,17 @@ Si le monstre le voit, il meurt.
 - [x] Laryrinthe généré aléatoirement
 - [x] Objets à collecter
 - [x] Monstre
-- [ ] Système d'étapes
+- [x] Système d'étapes
 - [ ] Faire un menu
 - [ ] Objets bonus
 	- Boussole : Révèle la position du monstre
 	- Carte : Révèle la position des objets à récupérer
 	- Chaussures : Le joueur court plus vite
+- [ ] Différentes difficultés
+	- Facile
+	- Normal
+	- Difficile
+	- Custom
 
 ## Sources
 * Tuto jeu à la première personne : [https://www.youtube.com/watch?v=JwwSDokaCq4](https://www.youtube.com/watch?v=JwwSDokaCq4)

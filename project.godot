@@ -15,12 +15,20 @@ run/main_scene="uid://bb2u75utxppt7"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Stats="*uid://btyr16n6bdalb"
+
 [display]
 
 window/size/viewport_width=2300
 window/size/viewport_height=1300
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom_font="uid://b2u8y185j0lmq"
 
 [input]
 

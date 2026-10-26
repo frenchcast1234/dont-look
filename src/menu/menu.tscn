@@ -2,6 +2,66 @@
 
 [ext_resource type="Script" uid="uid://chqgmt0161ilu" path="res://src/menu/menu.gd" id="1_ps8b8"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wf1j"]
+bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.14509805, 0.12941177, 0.16470589, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sblgy"]
+bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.29411766, 0.105882354, 0.050980393, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45w1x"]
+bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56xr1"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvra3"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.8, 0.40784314, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
 [node name="Menu" type="Control" unique_id=1804792701]
 layout_mode = 3
 anchors_preset = 15
@@ -18,21 +78,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1917871, 0.1917871, 0.19178706, 1)
-
-[node name="Title" type="Label" parent="." unique_id=1508314396]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -42.0
-offset_right = 42.0
-offset_bottom = 23.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 240
-text = "Don't look!"
-horizontal_alignment = 1
-vertical_alignment = 1
+color = Color(0.0627451, 0.0627451, 0.14117648, 1)
 
 [node name="PlayButton" type="Button" parent="." unique_id=1194846274]
 layout_mode = 1
@@ -47,7 +93,271 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "        Play        "
 
+[node name="Logo" type="Control" parent="." unique_id=189481081]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.34461537
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="RichTextLabel" parent="Logo" unique_id=1509565194]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -627.0
+offset_top = 45.0
+offset_right = 627.0
+offset_bottom = 373.0
+grow_horizontal = 2
+rotation = -0.08726646
+theme_override_colors/default_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 200
+theme_override_font_sizes/normal_font_size = 240
+bbcode_enabled = true
+text = "[shake rate=60.0 level=15 connected=1]Don't look[/shake]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="RichTextLabel" parent="Logo" unique_id=32029279]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -627.0
+offset_top = 100.0
+offset_right = 748.6599
+offset_bottom = 428.0
+grow_horizontal = 2
+rotation = 0.08726646
+theme_override_colors/default_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 200
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[wave amp=30 freq=5 speed=4 ease=-2.0]AT ME[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Best" type="Label" parent="." unique_id=788848488]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -208.5
+offset_top = -125.0
+offset_right = 208.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_font_sizes/font_size = 80
+text = "Best score : X"
+
+[node name="Popup" type="Panel" parent="." unique_id=33753985]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -889.5
+offset_top = -256.0
+offset_right = 889.5
+offset_bottom = 438.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_45w1x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup" unique_id=1711959941]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.5
+offset_top = -105.0
+offset_right = 376.5
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Popup/VBoxContainer" unique_id=1081181515]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 128
+text = "Choose a difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/VBoxContainer" unique_id=739850841]
+layout_mode = 2
+alignment = 1
+
+[node name="Easy" type="Button" parent="Popup/VBoxContainer/HBoxContainer" unique_id=1154224615]
+custom_minimum_size = Vector2(753, 210)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
+text = "Easy"
+
+[node name="Spacer" type="Control" parent="Popup/VBoxContainer/HBoxContainer" unique_id=522710396]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Normal" type="Button" parent="Popup/VBoxContainer/HBoxContainer" unique_id=267974882]
+custom_minimum_size = Vector2(753, 210)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
+text = "Normal"
+
+[node name="Spacer" type="Control" parent="Popup/VBoxContainer" unique_id=1673828876]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Popup/VBoxContainer" unique_id=2074924620]
+layout_mode = 2
+
+[node name="Difficult" type="Button" parent="Popup/VBoxContainer/HBoxContainer2" unique_id=1504229955]
+custom_minimum_size = Vector2(753, 210)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
+text = "Difficult"
+
+[node name="Spacer" type="Control" parent="Popup/VBoxContainer/HBoxContainer2" unique_id=1997604052]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Custom" type="Button" parent="Popup/VBoxContainer/HBoxContainer2" unique_id=994946135]
+custom_minimum_size = Vector2(753, 210)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
+text = "Custom"
+
+[node name="Popup2" type="Panel" parent="." unique_id=950231977]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -889.5
+offset_top = -256.0
+offset_right = 889.5
+offset_bottom = 438.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_45w1x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup2" unique_id=1945961486]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.5
+offset_top = -105.0
+offset_right = 376.5
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Popup2/VBoxContainer" unique_id=923046449]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 128
+text = "Choose a difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Popup2/VBoxContainer" unique_id=1776890183]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Popup2/VBoxContainer" unique_id=726072400]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 64
+text = "0.02"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Popup2/VBoxContainer" unique_id=467356090]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_56xr1")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_yvra3")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_yvra3")
+min_value = 0.05
+max_value = 1.0
+step = 0.05
+value = 0.2
+ticks_on_borders = true
+
+[node name="Spacer2" type="Control" parent="Popup2/VBoxContainer" unique_id=495456411]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="OK" type="Button" parent="Popup2/VBoxContainer" unique_id=1035151925]
+custom_minimum_size = Vector2(753, 210)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
+text = "Done"
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer2/Difficult" to="." method="_on_difficult_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer2/Custom" to="." method="_on_custom_pressed"]
+[connection signal="pressed" from="Popup2/VBoxContainer/OK" to="." method="_on_ok_pressed"]

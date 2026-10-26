@@ -2,11 +2,12 @@ extends CharacterBody3D
 signal game_over
 
 var can_move: bool = false
-const SPEED: int = 200
+var SPEED: float = Stats.boss_speed
 var tween: Tween
 var last: Array
 
 func _ready() -> void:
+	$Wait.wait_time = SPEED + 0.005
 	await get_tree().create_timer(1).timeout
 	$Wait.start()
 
@@ -29,7 +30,7 @@ func _physics_process(delta: float) -> void:
 		if tween and tween.is_valid():
 			tween.kill()
 		tween = create_tween()
-		tween.tween_property(self, "global_position", global_position + global_transform.basis * Vector3.FORWARD, 0.2)
+		tween.tween_property(self, "global_position", global_position + global_transform.basis * Vector3.FORWARD, SPEED)
 
 	move_and_slide()
 

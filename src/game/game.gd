@@ -96,7 +96,6 @@ func generate_grid(size: int, is_complex: bool, objects: int) -> Array:
 func _ready() -> void:
 	$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
 	$Monster.game_over.connect(func():
-		print("game over")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		$Player/Head.is_dead = true
 		$Player/Head.target = $Monster.global_position
