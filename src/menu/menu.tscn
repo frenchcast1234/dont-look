@@ -168,6 +168,7 @@ theme_override_font_sizes/font_size = 80
 text = "Best score : X"
 
 [node name="Popup" type="Panel" parent="." unique_id=33753985]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -275,6 +276,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "Custom"
 
 [node name="Popup2" type="Panel" parent="." unique_id=950231977]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

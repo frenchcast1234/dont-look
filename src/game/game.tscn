@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://88j67tdabnsf" path="res://src/game/head.gd" id="5_jhw8o"]
 [ext_resource type="Script" uid="uid://c6bi0g47meyy0" path="res://src/game/monster.gd" id="5_xptat"]
 [ext_resource type="Script" uid="uid://d1c0dc6gtgswk" path="res://src/game/game_over.gd" id="5_yarin"]
+[ext_resource type="PackedScene" uid="uid://d7isp0khg52t" path="res://assets/models/dl-player.gltf" id="8_n7s5x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7grgb"]
 
@@ -60,9 +61,8 @@ material = SubResource("StandardMaterial3D_xxpmf")
 radius = 0.4
 height = 1.8
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2wf1j"]
-radius = 0.4
-height = 1.8
+[sub_resource type="BoxShape3D" id="BoxShape3D_xxpmf"]
+size = Vector3(0.8, 2, 0.8)
 
 [node name="Game" type="Node3D" unique_id=1433563188]
 script = ExtResource("1_qnjlk")
@@ -209,6 +209,9 @@ text = "    Menu    "
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 script = ExtResource("5_xptat")
 
+[node name="blockbench_export" parent="Monster" unique_id=58913851 instance=ExtResource("8_n7s5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
 [node name="Front" type="RayCast3D" parent="Monster" unique_id=174615238]
 target_position = Vector3(0, 0, -1)
 collision_mask = 4
@@ -226,10 +229,12 @@ target_position = Vector3(-1, 0, 0)
 collision_mask = 4
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Monster" unique_id=809449300]
+visible = false
 mesh = SubResource("CapsuleMesh_xxpmf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Monster" unique_id=946571462]
-shape = SubResource("CapsuleShape3D_2wf1j")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0011963844, 0)
+shape = SubResource("BoxShape3D_xxpmf")
 
 [node name="Head" type="Node3D" parent="Monster" unique_id=595611177]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3802266, 0)
