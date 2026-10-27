@@ -6,6 +6,7 @@ var grid_size: int = 8
 var collected: int = 0
 var to_collect: int = 3
 var rounds: int = 1
+var best_score: int
 
 func generate_grid(size: int, is_complex: bool, objects: int) -> Array:
 	var grid := []
@@ -94,6 +95,9 @@ func generate_grid(size: int, is_complex: bool, objects: int) -> Array:
 	return grid
 
 func _ready() -> void:
+	var file = FileAccess.open("user://save_game.dat", FileAccess.READ)
+	var content = file.get_as_text()
+	best_score = int(content)
 	$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
 	$Monster.game_over.connect(func():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -146,7 +150,7 @@ func create() -> void:
 			elif grid[i][j] == -4:
 				$Player.position = Vector3(
 					i - grid_size,
-					4,
+					2,
 					j - grid_size
 				)
 				$Player.velocity = Vector3.ZERO
@@ -157,6 +161,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		collected += 1
 		$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
 		if collected >= to_collect:
+			if rounds > best_score:
+				var file = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
+				file.store_string(str(rounds))
 			grid_size += 5
 			rounds += 1
 			to_collect += 1

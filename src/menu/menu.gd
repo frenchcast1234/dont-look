@@ -1,6 +1,12 @@
 extends Control
 
 func _ready() -> void:
+	if not FileAccess.file_exists("user://save_game.dat"):
+		var file = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
+		file.store_string("0")
+	var file = FileAccess.open("user://save_game.dat", FileAccess.READ)
+	var content = file.get_as_text()
+	$Best.text = "Best score: %d" % int(content)
 	$Popup.visible = false
 	$Popup2.visible = false
 
