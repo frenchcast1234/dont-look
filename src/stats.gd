@@ -1,3 +1,10 @@
 extends Node
 
-var boss_speed: float = 0.2
+var monster_speed: float = 0.2
+var player_speed: int = 280
+var player_jump_force: int = 280
+var initial_map_size: int = 8
+var initial_collectables: int = 3
+var complex_map: bool = true
+var monster_count: int = 1
+var is_custom: bool = false

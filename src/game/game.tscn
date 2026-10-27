@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ps2a16r6cmep" path="res://src/game/object.tscn" id="3_l80un"]
 [ext_resource type="Sky" uid="uid://2dnmg2vbnwyv" path="res://addons/night_atmosphere/resources/night_sky.tres" id="4_6kr85"]
 [ext_resource type="Script" uid="uid://88j67tdabnsf" path="res://src/game/head.gd" id="5_jhw8o"]
-[ext_resource type="Script" uid="uid://c6bi0g47meyy0" path="res://src/game/monster.gd" id="5_xptat"]
 [ext_resource type="Script" uid="uid://d1c0dc6gtgswk" path="res://src/game/game_over.gd" id="5_yarin"]
-[ext_resource type="PackedScene" uid="uid://o38g2dak1g8p" path="res://src/game/monster.tscn" id="9_6kr85"]
+[ext_resource type="PackedScene" uid="uid://cc6bvt24ib2np" path="res://src/game/monster.tscn" id="9_6kr85"]
 
 [sub_resource type="Environment" id="Environment_6kr85"]
 background_mode = 2
@@ -54,21 +53,11 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxpmf"]
-albedo_color = Color(0.6039216, 0.20392157, 0.8784314, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_xxpmf"]
-material = SubResource("StandardMaterial3D_xxpmf")
-radius = 0.4
-height = 1.8
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xxpmf"]
-size = Vector3(0.8, 2, 0.8)
-
 [node name="Game" type="Node3D" unique_id=1433563188]
 script = ExtResource("1_qnjlk")
 wall_scene = ExtResource("2_kgj8g")
 object_scene = ExtResource("3_l80un")
+monster_scene = ExtResource("9_6kr85")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1123099634]
 environment = SubResource("Environment_6kr85")
@@ -115,6 +104,8 @@ shadow_enabled = true
 [node name="Walls" type="Node3D" parent="." unique_id=581190974]
 
 [node name="Objects" type="Node3D" parent="." unique_id=64769581]
+
+[node name="Monsters" type="Node3D" parent="." unique_id=1082798001]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=328419459]
 process_mode = 3
@@ -207,47 +198,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "    Menu    "
 
-[node name="Monster" type="CharacterBody3D" parent="." unique_id=2870589]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-script = ExtResource("5_xptat")
-
-[node name="Front" type="RayCast3D" parent="Monster" unique_id=174615238]
-target_position = Vector3(0, 0, -1)
-collision_mask = 4
-
-[node name="Back" type="RayCast3D" parent="Monster" unique_id=1614481025]
-target_position = Vector3(0, 0, 1)
-collision_mask = 4
-
-[node name="Left" type="RayCast3D" parent="Monster" unique_id=517608386]
-target_position = Vector3(1, 0, 0)
-collision_mask = 4
-
-[node name="Right" type="RayCast3D" parent="Monster" unique_id=794703590]
-target_position = Vector3(-1, 0, 0)
-collision_mask = 4
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="Monster" unique_id=809449300]
-visible = false
-mesh = SubResource("CapsuleMesh_xxpmf")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Monster" unique_id=946571462]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0011963844, 0)
-shape = SubResource("BoxShape3D_xxpmf")
-
-[node name="Head" type="Node3D" parent="Monster" unique_id=595611177]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3802266, 0)
-
-[node name="Vision" type="RayCast3D" parent="Monster/Head" unique_id=1485398387]
-target_position = Vector3(0, 0, -100)
-collision_mask = 8
-collide_with_areas = true
-
-[node name="Wait" type="Timer" parent="Monster" unique_id=106982605]
-wait_time = 0.205
-
-[node name="Monster" parent="Monster" unique_id=1372328583 instance=ExtResource("9_6kr85")]
-
 [connection signal="body_entered" from="Player/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/GameOver/Button" to="CanvasLayer/GameOver" method="_on_button_pressed"]
-[connection signal="timeout" from="Monster/Wait" to="Monster" method="_on_wait_timeout"]

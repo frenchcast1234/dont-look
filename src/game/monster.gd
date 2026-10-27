@@ -2,11 +2,12 @@ extends CharacterBody3D
 signal game_over
 
 var can_move: bool = false
-var SPEED: float = Stats.boss_speed
+var SPEED: float = Stats.monster_speed
 var tween: Tween
 var last: Array
 
 func _ready() -> void:
+	print(SPEED)
 	$Wait.wait_time = SPEED + 0.005
 	await get_tree().create_timer(1).timeout
 	$Wait.start()

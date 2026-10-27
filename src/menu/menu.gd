@@ -14,14 +14,10 @@ func _on_play_button_pressed() -> void:
 	$Popup.visible = true
 
 func _on_easy_pressed() -> void:
-	Stats.boss_speed = 0.25
-	print(Stats.boss_speed)
 	get_tree().change_scene_to_file("res://src/game/game.tscn")
 func _on_normal_pressed() -> void:
-	Stats.boss_speed = 0.2
 	get_tree().change_scene_to_file("res://src/game/game.tscn")
 func _on_difficult_pressed() -> void:
-	Stats.boss_speed = 0.15
 	get_tree().change_scene_to_file("res://src/game/game.tscn")
 func _on_custom_pressed() -> void:
 	$Popup2.visible = true
@@ -40,4 +36,12 @@ func _on_popup_2_done(
 	complex_map: bool, 
 	monster_count: int
 ) -> void:
-	pass # Replace with function body.
+	Stats.monster_speed = monster_speed
+	Stats.player_speed = player_speed
+	Stats.player_jump_force = player_jump_force
+	Stats.initial_map_size = initial_map_size
+	Stats.initial_collectables = initial_collectables
+	Stats.complex_map = complex_map
+	Stats.monster_count = monster_count
+	Stats.is_custom = true
+	get_tree().change_scene_to_file("res://src/game/game.tscn")

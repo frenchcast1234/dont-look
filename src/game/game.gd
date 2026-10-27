@@ -1,14 +1,15 @@
 extends Node3D
 
-var grid_size: int = 8
+var grid_size: int = Stats.initial_map_size
 @export var wall_scene: PackedScene
 @export var object_scene: PackedScene
+@export var monster_scene: PackedScene
 var collected: int = 0
-var to_collect: int = 3
+var to_collect: int = Stats.initial_collectables
 var rounds: int = 1
 var best_score: int
 
-func generate_grid(size: int, is_complex: bool, objects: int) -> Array:
+func generate_grid(size: int, is_complex: bool, objects: int, mcount: int) -> Array:
 	var grid := []
 	var nb: int = 0
 	
@@ -75,16 +76,21 @@ func generate_grid(size: int, is_complex: bool, objects: int) -> Array:
 			continue
 		grid[x][y] = -2
 		placed += 1
-		
-	while true:
+	
+	placed = 0
+	print(placed < mcount)
+	while placed < mcount:
+		print("loop")
 		var x: int = (randi() % (size - 1)) + 1
 		var y: int = (randi() % (size - 1)) + 1
+		print("monster")
 		if grid[x][y] < 0:
 			continue
 		grid[x][y] = -3
-		break
+		placed += 1
 		
 	while true:
+		print("player")
 		var x: int = (randi() % (size - 1)) + 1 + size
 		var y: int = (randi() % (size - 1)) + 1 + size
 		if grid[x][y] < 0:
@@ -99,20 +105,13 @@ func _ready() -> void:
 	var content = file.get_as_text()
 	best_score = int(content)
 	$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
-	$Monster.game_over.connect(func():
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		$Player/Head.is_dead = true
-		$Player/Head.target = $Monster.global_position
-		$CanvasLayer/GameOver.visible = true
-		$CanvasLayer/GameOver/VBoxContainer/Rounds.text = "Rounds: %d" % rounds
-		get_tree().paused = true
-	)
 	create()
 
 func create() -> void:
+	print(Stats.monster_count)
 	for child in $Walls.get_children():
 		child.queue_free()
-	var grid := generate_grid(grid_size, true, to_collect)
+	var grid := generate_grid(grid_size, Stats.complex_map, to_collect, Stats.monster_count)
 	$Ground/CSGBox3D.size = Vector3(
 		grid_size * 2 + 1,
 		1,
@@ -142,11 +141,22 @@ func create() -> void:
 				)
 				$Objects.add_child(obj)
 			elif grid[i][j] == -3:
-				$Monster.position = Vector3(
+				print("spawn")
+				var obj = monster_scene.instantiate()
+				obj.position = Vector3(
 					i - grid_size,
 					4,
 					j - grid_size
 				)
+				obj.game_over.connect(func():
+					Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+					$Player/Head.is_dead = true
+					$Player/Head.target = obj.global_position
+					$CanvasLayer/GameOver.visible = true
+					$CanvasLayer/GameOver/VBoxContainer/Rounds.text = "Rounds: %d" % rounds
+					get_tree().paused = true
+				)
+				$Monsters.add_child(obj)
 			elif grid[i][j] == -4:
 				$Player.position = Vector3(
 					i - grid_size,
@@ -161,7 +171,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		collected += 1
 		$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
 		if collected >= to_collect:
-			if rounds > best_score:
+			if rounds > best_score and not Stats.is_custom:
 				var file = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
 				file.store_string(str(rounds))
 			grid_size += 5
