@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/night_atmosphere/scripts/flicker_light.gd" id="1_fl"]
+
+[node name="FlickerLight" type="OmniLight3D"]
+light_color = Color(1, 0.72, 0.36, 1)
+light_energy = 1.6
+shadow_enabled = false
+omni_range = 4.5
+omni_attenuation = 1.6
+script = ExtResource("1_fl")
+base_energy = 1.6
+flicker_amount = 0.28
+flicker_speed = 2.4
+warm_color = Color(1, 0.72, 0.36, 1)

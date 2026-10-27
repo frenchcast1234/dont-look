@@ -30,3 +30,4 @@ Si le monstre le voit, il meurt.
 * Wikipedia génération aléatoire de labyrinthe : [https://fr.wikipedia.org/wiki/Mod%C3%A9lisation_math%C3%A9matique_d%27un_labyrinthe#Fusion_al%C3%A9atoire_de_chemins](https://fr.wikipedia.org/wiki/Mod%C3%A9lisation_math%C3%A9matique_d%27un_labyrinthe#Fusion_al%C3%A9atoire_de_chemins)
 * Palette de couleur : [https://lospec.com/palette-list/desolate-guest](https://lospec.com/palette-list/desolate-guest)
 * Police d'écriture Creepster : [https://fonts.google.com/specimen/Creepster?preview.script=Latn](https://fonts.google.com/specimen/Creepster?preview.script=Latn)
+* Atmosphere : [https://dirtemagic.itch.io/stylized-night-atmosphere-for-godot-4](https://dirtemagic.itch.io/stylized-night-atmosphere-for-godot-4)

@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Shader" path="res://addons/night_atmosphere/shaders/flame.gdshader" id="1_sh"]
+[ext_resource type="Script" path="res://addons/night_atmosphere/scripts/flame.gd" id="2_fl"]
+[ext_resource type="PackedScene" path="res://addons/night_atmosphere/scenes/flicker_light.tscn" id="3_light"]
+
+[sub_resource type="ShaderMaterial" id="Mat_flame"]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("1_sh")
+shader_parameter/billboard = true
+shader_parameter/taper = 1.15
+shader_parameter/width = 0.62
+shader_parameter/bite = 0.42
+shader_parameter/edge = 9.0
+shader_parameter/tip_fade = 0.05
+shader_parameter/base_fade = 0.12
+shader_parameter/rise_speed = 1.6
+shader_parameter/noise_scale = 3.2
+shader_parameter/sway = 0.06
+shader_parameter/sway_speed = 1.9
+shader_parameter/seed = 0.0
+shader_parameter/core_color = Color(1, 0.96, 0.8, 1)
+shader_parameter/mid_color = Color(1, 0.63, 0.18, 1)
+shader_parameter/rim_color = Color(0.85, 0.19, 0.03, 1)
+shader_parameter/brightness = 2.4
+
+[sub_resource type="QuadMesh" id="Quad_flame"]
+resource_local_to_scene = true
+material = SubResource("Mat_flame")
+size = Vector2(0.16, 0.3)
+center_offset = Vector3(0, 0.15, 0)
+
+[node name="Flame" type="Node3D"]
+script = ExtResource("2_fl")
+size = Vector2(0.16, 0.3)
+scale_with_size = true
+width = 0.62
+taper = 1.15
+bite = 0.42
+edge = 9.0
+tip_fade = 0.05
+base_fade = 0.12
+noise_scale = 3.2
+rise_speed = 1.6
+sway = 0.06
+sway_speed = 1.9
+random_seed = true
+core_color = Color(1, 0.96, 0.8, 1)
+mid_color = Color(1, 0.63, 0.18, 1)
+rim_color = Color(0.85, 0.19, 0.03, 1)
+brightness = 2.4
+light_energy = 1.2
+light_height = 0.55
+
+[node name="Quad" type="MeshInstance3D" parent="."]
+mesh = SubResource("Quad_flame")
+cast_shadow = 0
+
+[node name="FlickerLight" parent="." instance=ExtResource("3_light")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.165, 0)
+omni_range = 3.3
+base_energy = 1.2

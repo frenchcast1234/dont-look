@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://addons/night_atmosphere/scripts/fireflies.gd" id="1_ff"]
+[ext_resource type="Shader" path="res://addons/night_atmosphere/shaders/firefly.gdshader" id="2_sh"]
+
+[sub_resource type="ShaderMaterial" id="Mat_ff"]
+render_priority = 3
+shader = ExtResource("2_sh")
+shader_parameter/size_scale = 1.0
+shader_parameter/glow_color = Color(0.8, 1, 0.45, 1)
+shader_parameter/core = 0.16
+shader_parameter/falloff = 2.6
+shader_parameter/brightness = 4.0
+
+[sub_resource type="QuadMesh" id="Quad_ff"]
+material = SubResource("Mat_ff")
+size = Vector2(1, 1)
+
+[node name="Fireflies" type="MultiMeshInstance3D"]
+cast_shadow = 0
+gi_mode = 0
+script = ExtResource("1_ff")
+draw_mesh = SubResource("Quad_ff")
+count = 45
+area = Vector3(14, 3.5, 14)

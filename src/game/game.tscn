@@ -4,19 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://cdcx266qq3g4k" path="res://src/game/wall.tscn" id="2_kgj8g"]
 [ext_resource type="Script" uid="uid://b7vo03ppvyatm" path="res://src/game/player.gd" id="2_s6lek"]
 [ext_resource type="PackedScene" uid="uid://ps2a16r6cmep" path="res://src/game/object.tscn" id="3_l80un"]
+[ext_resource type="Sky" uid="uid://2dnmg2vbnwyv" path="res://addons/night_atmosphere/resources/night_sky.tres" id="4_6kr85"]
 [ext_resource type="Script" uid="uid://88j67tdabnsf" path="res://src/game/head.gd" id="5_jhw8o"]
 [ext_resource type="Script" uid="uid://c6bi0g47meyy0" path="res://src/game/monster.gd" id="5_xptat"]
 [ext_resource type="Script" uid="uid://d1c0dc6gtgswk" path="res://src/game/game_over.gd" id="5_yarin"]
 [ext_resource type="PackedScene" uid="uid://d7isp0khg52t" path="res://assets/models/dl-player.gltf" id="8_n7s5x"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7grgb"]
-
-[sub_resource type="Sky" id="Sky_xxpmf"]
-sky_material = SubResource("ProceduralSkyMaterial_7grgb")
-
-[sub_resource type="Environment" id="Environment_2wf1j"]
+[sub_resource type="Environment" id="Environment_6kr85"]
 background_mode = 2
-sky = SubResource("Sky_xxpmf")
+sky = ExtResource("4_6kr85")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7sdb"]
 albedo_color = Color(0.1882353, 0.24313726, 0.13725491, 1)
@@ -73,7 +69,7 @@ wall_scene = ExtResource("2_kgj8g")
 object_scene = ExtResource("3_l80un")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1123099634]
-environment = SubResource("Environment_2wf1j")
+environment = SubResource("Environment_6kr85")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=875011244]
 collision_priority = 2.0

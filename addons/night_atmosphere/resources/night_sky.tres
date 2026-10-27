@@ -1,0 +1,40 @@
+[gd_resource type="Sky" format=3 uid="uid://2dnmg2vbnwyv"]
+
+[ext_resource type="Shader" uid="uid://ccnqu70do2s5l" path="res://addons/night_atmosphere/shaders/night_sky.gdshader" id="1_nightsky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhbp6"]
+shader = ExtResource("1_nightsky")
+shader_parameter/zenith_color = Color(0.01, 0.018, 0.045, 1)
+shader_parameter/horizon_color = Color(0.045, 0.062, 0.105, 1)
+shader_parameter/ground_color = Color(0.008, 0.01, 0.016, 1)
+shader_parameter/horizon_falloff = 3.2
+shader_parameter/star_density = 160.0
+shader_parameter/star_amount = 0.035
+shader_parameter/star_brightness = 1.6
+shader_parameter/twinkle_speed = 1.6
+shader_parameter/star_warm = Color(1, 0.86, 0.72, 1)
+shader_parameter/star_cool = Color(0.72, 0.82, 1, 1)
+shader_parameter/star_horizon_fade = 0.75
+shader_parameter/band_strength = 0.35
+shader_parameter/band_axis = Vector3(1.705, 0.065, -0.83)
+shader_parameter/band_color = Color(0.36, 0.4, 0.62, 1)
+shader_parameter/moon_direction = Vector3(-2.05, 2.24, 1.995)
+shader_parameter/moon_size = 0.035
+shader_parameter/moon_color = Color(1, 0.97, 0.9, 1)
+shader_parameter/moon_brightness = 3.0
+shader_parameter/moon_phase = -0.35
+shader_parameter/halo_size = 130.98800617443
+shader_parameter/halo_strength = 0.2190000104025
+shader_parameter/cloud_amount = 0.518000024605
+shader_parameter/cloud_scale = 2.65300011949773
+shader_parameter/cloud_drift = Vector2(0, -0.05)
+shader_parameter/cloud_brightness = 1.0610000503975
+shader_parameter/cloud_moonlight = 1.6
+shader_parameter/cloud_sharpness = 1.5
+shader_parameter/cloud_horizon_fade = 0.45
+shader_parameter/cloud_dome = 0.0
+
+[resource]
+sky_material = SubResource("ShaderMaterial_mhbp6")
+process_mode = 2
+radiance_size = 1

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Shader" path="res://addons/night_atmosphere/shaders/ground_mist.gdshader" id="1_sh"]
+[ext_resource type="Script" path="res://addons/night_atmosphere/scripts/ground_mist.gd" id="2_gm"]
+
+[sub_resource type="ShaderMaterial" id="Mat_mist"]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("1_sh")
+shader_parameter/mist_color = Color(0.72, 0.78, 0.86, 1)
+shader_parameter/density = 0.32
+shader_parameter/soft_fade = 1.1
+shader_parameter/near_fade = 3.5
+shader_parameter/noise_scale = 0.09
+shader_parameter/drift = Vector2(0.012, 0.006)
+shader_parameter/layer2_scale = 0.21
+shader_parameter/layer2_speed = 2.3
+shader_parameter/contrast = 1.5
+shader_parameter/edge_fade = 0.22
+
+[sub_resource type="PlaneMesh" id="Plane_mist"]
+resource_local_to_scene = true
+material = SubResource("Mat_mist")
+size = Vector2(30, 30)
+
+[node name="GroundMist" type="Node3D"]
+script = ExtResource("2_gm")
+size = Vector2(30, 30)
+height = 0.35
+density = 0.32
+color = Color(0.72, 0.78, 0.86, 1)
+contrast = 1.5
+soft_fade = 1.1
+edge_fade = 0.22
+drift = Vector2(0.012, 0.006)
+
+[node name="Sheet" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("Plane_mist")
