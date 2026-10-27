@@ -25,6 +25,13 @@ func _process(delta: float) -> void:
 	if not $Popup2.visible: return
 	$Popup2/VBoxContainer/Label2.text = str($Popup2/VBoxContainer/HSlider.value)
 
-func _on_ok_pressed() -> void:
-	Stats.boss_speed = $Popup2/VBoxContainer/HSlider.value
-	get_tree().change_scene_to_file("res://src/game/game.tscn")
+func _on_popup_2_done(
+	monster_speed: float, 
+	player_speed: int, 
+	player_jump_force: int, 
+	initial_map_size: int, 
+	initial_collectables: int, 
+	complex_map: bool, 
+	monster_count: int
+) -> void:
+	pass # Replace with function body.

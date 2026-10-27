@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://88j67tdabnsf" path="res://src/game/head.gd" id="5_jhw8o"]
 [ext_resource type="Script" uid="uid://c6bi0g47meyy0" path="res://src/game/monster.gd" id="5_xptat"]
 [ext_resource type="Script" uid="uid://d1c0dc6gtgswk" path="res://src/game/game_over.gd" id="5_yarin"]
-[ext_resource type="PackedScene" uid="uid://d7isp0khg52t" path="res://assets/models/dl-player.gltf" id="8_n7s5x"]
+[ext_resource type="PackedScene" uid="uid://o38g2dak1g8p" path="res://src/game/monster.tscn" id="9_6kr85"]
 
 [sub_resource type="Environment" id="Environment_6kr85"]
 background_mode = 2
@@ -211,9 +211,6 @@ text = "    Menu    "
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 script = ExtResource("5_xptat")
 
-[node name="blockbench_export" parent="Monster" unique_id=58913851 instance=ExtResource("8_n7s5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-
 [node name="Front" type="RayCast3D" parent="Monster" unique_id=174615238]
 target_position = Vector3(0, 0, -1)
 collision_mask = 4
@@ -248,6 +245,8 @@ collide_with_areas = true
 
 [node name="Wait" type="Timer" parent="Monster" unique_id=106982605]
 wait_time = 0.205
+
+[node name="Monster" parent="Monster" unique_id=1372328583 instance=ExtResource("9_6kr85")]
 
 [connection signal="body_entered" from="Player/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/GameOver/Button" to="CanvasLayer/GameOver" method="_on_button_pressed"]

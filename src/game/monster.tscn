@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://o38g2dak1g8p"]
+
+[ext_resource type="PackedScene" uid="uid://d7isp0khg52t" path="res://assets/models/dl-player.gltf" id="1_bjvcb"]
+[ext_resource type="Script" uid="uid://cu5wllkqo3wax" path="res://src/game/vision.gd" id="2_mjeqh"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5busx"]
+flip_faces = true
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhn4f"]
+transparency = 1
+albedo_color = Color(0.4509804, 0.11764706, 0.06666667, 0.8392157)
+emission_enabled = true
+emission = Color(0.4509804, 0.11764706, 0.06666667, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73hbl"]
+transparency = 1
+albedo_color = Color(0.4509804, 0.11764706, 0.06666667, 0.8392157)
+emission_enabled = true
+emission = Color(0.4509804, 0.11764706, 0.06666667, 1)
+emission_energy_multiplier = 10.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_4iqgg"]
+_data = [Vector2(0, 0.50000006), 0.0, 0.0, 0, 0, Vector2(0.25296444, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pu7p8"]
+curve = SubResource("Curve_4iqgg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_djvjd"]
+inherit_velocity_ratio = 1.0
+spread = 80.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_pu7p8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ybxky"]
+size = Vector2(0.02, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmuma"]
+transparency = 1
+albedo_color = Color(0.4509804, 0.11764706, 0.06666667, 0.8392157)
+emission_enabled = true
+emission = Color(0.4509804, 0.11764706, 0.06666667, 1)
+emission_energy_multiplier = 10.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_7ktb7"]
+_data = [Vector2(0, 0.50000006), 0.0, 0.0, 0, 0, Vector2(0.2450593, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_n5lbf"]
+curve = SubResource("Curve_7ktb7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rffl4"]
+emission_shape = 3
+emission_box_extents = Vector3(0.03, 0.1, 0.03)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_n5lbf")
+collision_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_n4evg"]
+size = Vector2(0.02, 0.02)
+
+[node name="Monster" unique_id=1372328583 instance=ExtResource("1_bjvcb")]
+
+[node name="Body" parent="." index="0" unique_id=350427979]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, -0.5625, 0)
+
+[node name="Right_Arm" parent="." index="1" unique_id=1471087357]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0.4375, -0.1875, 0)
+
+[node name="Left_Arm" parent="." index="2" unique_id=1398934443]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.4375, -0.1875, 0)
+
+[node name="Left_Leg" parent="." index="3" unique_id=57126899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, -1, 0)
+
+[node name="Right_Leg" parent="." index="4" unique_id=1336716038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1875, -1, 0)
+
+[node name="Left_Glass" parent="." index="5" unique_id=389009931]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.1875, 0.6875, -0.09375)
+
+[node name="Right_Glass" parent="." index="6" unique_id=739983424]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.1875, 0.6875, -0.09375)
+
+[node name="Left_Eye" parent="." index="7" unique_id=90218592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1875, 0.6875, -0.3125)
+
+[node name="Vision" type="RayCast3D" parent="Left_Eye" index="0" unique_id=54011583]
+target_position = Vector3(0, 0, -100)
+collision_mask = 8
+collide_with_areas = true
+script = ExtResource("2_mjeqh")
+
+[node name="BeamMesh" type="MeshInstance3D" parent="Left_Eye/Vision" index="0" unique_id=1958116165]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_5busx")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhn4f")
+
+[node name="EndParticles" type="GPUParticles3D" parent="Left_Eye/Vision" index="1" unique_id=1674172688]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_73hbl")
+amount = 25
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_djvjd")
+draw_pass_1 = SubResource("QuadMesh_ybxky")
+
+[node name="BeamParticles" type="GPUParticles3D" parent="Left_Eye/Vision" index="2" unique_id=689999494]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_rmuma")
+amount = 50
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_rffl4")
+draw_pass_1 = SubResource("QuadMesh_n4evg")
+
+[node name="Right_Eye" parent="." index="8" unique_id=1240654792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0.6875, -0.3125)
+
+[node name="Vision" type="RayCast3D" parent="Right_Eye" index="0" unique_id=130802203]
+target_position = Vector3(0, 0, -100)
+collision_mask = 8
+collide_with_areas = true
+script = ExtResource("2_mjeqh")
+
+[node name="BeamMesh" type="MeshInstance3D" parent="Right_Eye/Vision" index="0" unique_id=1857895288]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_5busx")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhn4f")
+
+[node name="EndParticles" type="GPUParticles3D" parent="Right_Eye/Vision" index="1" unique_id=938422406]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_73hbl")
+amount = 25
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_djvjd")
+draw_pass_1 = SubResource("QuadMesh_ybxky")
+
+[node name="BeamParticles" type="GPUParticles3D" parent="Right_Eye/Vision" index="2" unique_id=1784434970]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_rmuma")
+amount = 50
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_rffl4")
+draw_pass_1 = SubResource("QuadMesh_n4evg")
+
+[node name="Mouth" parent="." index="9" unique_id=127410821]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.3125, -0.375)

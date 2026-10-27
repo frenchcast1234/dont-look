@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bb2u75utxppt7"]
 
 [ext_resource type="Script" uid="uid://chqgmt0161ilu" path="res://src/menu/menu.gd" id="1_ps8b8"]
+[ext_resource type="Script" uid="uid://jmfrxq6v86ml" path="res://src/menu/popup_2.gd" id="2_sblgy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wf1j"]
 bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
@@ -276,7 +277,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "Custom"
 
 [node name="Popup2" type="Panel" parent="." unique_id=950231977]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -290,6 +290,7 @@ offset_bottom = 438.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_45w1x")
+script = ExtResource("2_sblgy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Popup2" unique_id=1945961486]
 layout_mode = 1
@@ -306,13 +307,14 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Popup2/VBoxContainer" unique_id=923046449]
+[node name="Setting" type="Label" parent="Popup2/VBoxContainer" unique_id=923046449]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 128
-text = "Choose a difficulty"
+text = "Choose a monster speed"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -331,6 +333,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="Popup2/VBoxContainer" unique_id=467356090]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_56xr1")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_yvra3")
@@ -362,4 +365,5 @@ text = "Done"
 [connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Normal" to="." method="_on_normal_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer2/Difficult" to="." method="_on_difficult_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer2/Custom" to="." method="_on_custom_pressed"]
-[connection signal="pressed" from="Popup2/VBoxContainer/OK" to="." method="_on_ok_pressed"]
+[connection signal="done" from="Popup2" to="." method="_on_popup_2_done"]
+[connection signal="pressed" from="Popup2/VBoxContainer/OK" to="Popup2" method="_on_ok_pressed"]

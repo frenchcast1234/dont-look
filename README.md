@@ -22,7 +22,7 @@ Si le monstre le voit, il meurt.
 	- Normal
 	- Difficile
 	- Custom
-- [ ] Modèles 3D
+- [x] Modèles 3D
 - [ ] Audio
 
 ## Sources
@@ -31,3 +31,4 @@ Si le monstre le voit, il meurt.
 * Palette de couleur : [https://lospec.com/palette-list/desolate-guest](https://lospec.com/palette-list/desolate-guest)
 * Police d'écriture Creepster : [https://fonts.google.com/specimen/Creepster?preview.script=Latn](https://fonts.google.com/specimen/Creepster?preview.script=Latn)
 * Atmosphere : [https://dirtemagic.itch.io/stylized-night-atmosphere-for-godot-4](https://dirtemagic.itch.io/stylized-night-atmosphere-for-godot-4)
+* Tuto pour les lasers : [https://www.youtube.com/watch?v=8QumOFwX9Z0](https://www.youtube.com/watch?v=8QumOFwX9Z0)

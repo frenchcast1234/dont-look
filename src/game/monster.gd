@@ -10,6 +10,8 @@ func _ready() -> void:
 	$Wait.wait_time = SPEED + 0.005
 	await get_tree().create_timer(1).timeout
 	$Wait.start()
+	$Monster/Left_Eye/Vision.activate(1)
+	$Monster/Right_Eye/Vision.activate(1)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

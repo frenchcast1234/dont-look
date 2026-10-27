@@ -15,3 +15,6 @@ material = SubResource("StandardMaterial3D_d7sdb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1744549886]
 shape = SubResource("BoxShape3D_2wf1j")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=868889568]
+size = Vector3(1, 2, 1)
