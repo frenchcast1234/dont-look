@@ -18,6 +18,9 @@ sky_material = SubResource("ProceduralSkyMaterial_7grgb")
 background_mode = 2
 sky = SubResource("Sky_xxpmf")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7sdb"]
+albedo_color = Color(0.1882353, 0.24313726, 0.13725491, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2wf1j"]
 size = Vector3(31, 1, 31)
 
@@ -77,6 +80,7 @@ collision_priority = 2.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Ground" unique_id=1619211704]
 size = Vector3(31, 1, 31)
+material = SubResource("StandardMaterial3D_d7sdb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=492991978]
 shape = SubResource("BoxShape3D_2wf1j")

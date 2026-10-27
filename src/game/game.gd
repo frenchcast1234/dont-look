@@ -1,10 +1,10 @@
 extends Node3D
 
-var grid_size: int = 15
+var grid_size: int = 8
 @export var wall_scene: PackedScene
 @export var object_scene: PackedScene
 var collected: int = 0
-var to_collect: int = 5
+var to_collect: int = 3
 var rounds: int = 1
 
 func generate_grid(size: int, is_complex: bool, objects: int) -> Array:
@@ -163,4 +163,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			collected = 0
 			get_tree().paused = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
 			create()
