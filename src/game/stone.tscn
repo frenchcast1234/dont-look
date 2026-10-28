@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ikxywhonb075"]
+
+[ext_resource type="Script" uid="uid://ewjaewb84lct" path="res://src/game/stone.gd" id="1_sfjv7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2wf1j"]
+size = Vector3(1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wf1j"]
+albedo_color = Color(0.6862745, 0.31764707, 0.15686275, 1)
+
+[node name="Stone" type="CharacterBody3D" unique_id=982196675]
+collision_layer = 2
+collision_mask = 2
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_sfjv7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1733128968]
+shape = SubResource("BoxShape3D_2wf1j")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=413697564]
+transform = Transform3D(1, 0, 0, 0, 0.022861114, 0, 0, 0, 1, 0, 0, 0)
+radius = 0.221
+material = SubResource("StandardMaterial3D_2wf1j")

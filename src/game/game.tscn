@@ -8,10 +8,18 @@
 [ext_resource type="Script" uid="uid://88j67tdabnsf" path="res://src/game/head.gd" id="5_jhw8o"]
 [ext_resource type="Script" uid="uid://d1c0dc6gtgswk" path="res://src/game/game_over.gd" id="5_yarin"]
 [ext_resource type="PackedScene" uid="uid://cc6bvt24ib2np" path="res://src/game/monster.tscn" id="9_6kr85"]
+[ext_resource type="Texture2D" uid="uid://41tsyqoykwuw" path="res://assets/img/stone.svg" id="9_clwl7"]
+[ext_resource type="Texture2D" uid="uid://duo186utid04c" path="res://assets/img/boot.svg" id="9_htx8b"]
+[ext_resource type="Script" uid="uid://bf1eq05cwebfd" path="res://src/game/inventory.gd" id="9_ueio8"]
+[ext_resource type="PackedScene" uid="uid://ikxywhonb075" path="res://src/game/stone.tscn" id="10_etvrb"]
+[ext_resource type="Texture2D" uid="uid://cuvox0xg06d03" path="res://assets/img/map.svg" id="10_ueio8"]
+[ext_resource type="Texture2D" uid="uid://ddv53ujidhrg5" path="res://assets/img/compass.svg" id="11_etvrb"]
 
 [sub_resource type="Environment" id="Environment_6kr85"]
 background_mode = 2
 sky = ExtResource("4_6kr85")
+glow_enabled = true
+glow_hdr_threshold = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7sdb"]
 albedo_color = Color(0.1882353, 0.24313726, 0.13725491, 1)
@@ -53,6 +61,21 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enx3y"]
+bg_color = Color(1, 0.8, 0.40784314, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxpmf"]
+bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
+
 [node name="Game" type="Node3D" unique_id=1433563188]
 script = ExtResource("1_qnjlk")
 wall_scene = ExtResource("2_kgj8g")
@@ -63,6 +86,7 @@ monster_scene = ExtResource("9_6kr85")
 environment = SubResource("Environment_6kr85")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=875011244]
+collision_layer = 3
 collision_priority = 2.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Ground" unique_id=1619211704]
@@ -106,6 +130,8 @@ shadow_enabled = true
 [node name="Objects" type="Node3D" parent="." unique_id=64769581]
 
 [node name="Monsters" type="Node3D" parent="." unique_id=1082798001]
+
+[node name="Stones" type="Node3D" parent="." unique_id=1225379343]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=328419459]
 process_mode = 3
@@ -198,5 +224,175 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "    Menu    "
 
+[node name="Inventory" type="Panel" parent="CanvasLayer" unique_id=831509824]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -160.0
+offset_right = 620.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_enx3y")
+script = ExtResource("9_ueio8")
+stone = ExtResource("10_etvrb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Inventory" unique_id=1041804237]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -60.0
+offset_right = 270.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Boot" type="Panel" parent="CanvasLayer/Inventory/HBoxContainer" unique_id=316361529]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xxpmf")
+
+[node name="Image" type="TextureRect" parent="CanvasLayer/Inventory/HBoxContainer/Boot" unique_id=1188181297]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_htx8b")
+stretch_mode = 2
+
+[node name="Count" type="Label" parent="CanvasLayer/Inventory/HBoxContainer/Boot" unique_id=1406063040]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Map" type="Panel" parent="CanvasLayer/Inventory/HBoxContainer" unique_id=421417396]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xxpmf")
+
+[node name="Image" type="TextureRect" parent="CanvasLayer/Inventory/HBoxContainer/Map" unique_id=363918010]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_ueio8")
+stretch_mode = 2
+
+[node name="Count" type="Label" parent="CanvasLayer/Inventory/HBoxContainer/Map" unique_id=440018084]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Compass" type="Panel" parent="CanvasLayer/Inventory/HBoxContainer" unique_id=279978165]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xxpmf")
+
+[node name="Image" type="TextureRect" parent="CanvasLayer/Inventory/HBoxContainer/Compass" unique_id=1981548442]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_etvrb")
+stretch_mode = 2
+
+[node name="Count" type="Label" parent="CanvasLayer/Inventory/HBoxContainer/Compass" unique_id=1427968697]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Stone" type="Panel" parent="CanvasLayer/Inventory/HBoxContainer" unique_id=802008236]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xxpmf")
+
+[node name="Image" type="TextureRect" parent="CanvasLayer/Inventory/HBoxContainer/Stone" unique_id=964307901]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+texture = ExtResource("9_clwl7")
+stretch_mode = 2
+
+[node name="Count" type="Label" parent="CanvasLayer/Inventory/HBoxContainer/Stone" unique_id=206337806]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="SpeedTimer" type="Timer" parent="CanvasLayer/Inventory" unique_id=1298038547]
+wait_time = 10.0
+one_shot = true
+
+[node name="MapTimer" type="Timer" parent="CanvasLayer/Inventory" unique_id=2078312753]
+wait_time = 10.0
+one_shot = true
+
+[node name="CompassTimer" type="Timer" parent="CanvasLayer/Inventory" unique_id=2131685400]
+wait_time = 10.0
+one_shot = true
+
+[node name="StoneTimer" type="Timer" parent="CanvasLayer/Inventory" unique_id=380711947]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="body_entered" from="Player/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/GameOver/Button" to="CanvasLayer/GameOver" method="_on_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/Inventory/SpeedTimer" to="CanvasLayer/Inventory" method="_on_speed_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Inventory/MapTimer" to="CanvasLayer/Inventory" method="_on_map_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Inventory/CompassTimer" to="CanvasLayer/Inventory" method="_on_compass_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Inventory/StoneTimer" to="CanvasLayer/Inventory" method="_on_stone_timer_timeout"]

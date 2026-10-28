@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6bi0g47meyy0" path="res://src/game/monster.gd" id="1_mjeqh"]
 [ext_resource type="PackedScene" uid="uid://o38g2dak1g8p" path="res://src/game/monster_model.tscn" id="2_5busx"]
+[ext_resource type="Script" uid="uid://dfsnrsqln72g8" path="res://src/game/compass.gd" id="3_5busx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxpmf"]
 albedo_color = Color(0.6039216, 0.20392157, 0.8784314, 1)
@@ -13,6 +14,82 @@ height = 1.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xxpmf"]
 size = Vector3(0.8, 2, 0.8)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bhn4f"]
+flip_faces = true
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73hbl"]
+transparency = 1
+albedo_color = Color(0.4509804, 0.11764706, 0.06666667, 0.8392157)
+emission_enabled = true
+emission = Color(0.4509804, 0.11764706, 0.06666667, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4iqgg"]
+transparency = 1
+albedo_color = Color(0.4509804, 0.11764706, 0.06666667, 0.8392157)
+emission_enabled = true
+emission = Color(0.4509804, 0.11764706, 0.06666667, 1)
+emission_energy_multiplier = 10.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_djvjd"]
+_data = [Vector2(0, 0.50000006), 0.0, 0.0, 0, 0, Vector2(0.25296444, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pu7p8"]
+curve = SubResource("Curve_djvjd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ybxky"]
+inherit_velocity_ratio = 1.0
+spread = 80.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_pu7p8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rmuma"]
+size = Vector2(0.02, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ktb7"]
+transparency = 1
+albedo_color = Color(0.4509804, 0.11764706, 0.06666667, 0.8392157)
+emission_enabled = true
+emission = Color(0.4509804, 0.11764706, 0.06666667, 1)
+emission_energy_multiplier = 10.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_rffl4"]
+_data = [Vector2(0, 0.50000006), 0.0, 0.0, 0, 0, Vector2(0.2450593, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_n5lbf"]
+curve = SubResource("Curve_rffl4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n4evg"]
+emission_shape = 3
+emission_box_extents = Vector3(0.03, 0.1, 0.03)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_n5lbf")
+collision_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_kbp51"]
+size = Vector2(0.02, 0.02)
 
 [node name="Monster" type="CharacterBody3D" unique_id=47447526]
 script = ExtResource("1_mjeqh")
@@ -53,5 +130,33 @@ collide_with_areas = true
 wait_time = 0.205
 
 [node name="Monster" parent="." unique_id=1372328583 instance=ExtResource("2_5busx")]
+
+[node name="Compass" type="RayCast3D" parent="." unique_id=2074839325]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 8
+collide_with_areas = true
+script = ExtResource("3_5busx")
+
+[node name="BeamMesh" type="MeshInstance3D" parent="Compass" unique_id=1149387098]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_bhn4f")
+surface_material_override/0 = SubResource("StandardMaterial3D_73hbl")
+
+[node name="EndParticles" type="GPUParticles3D" parent="Compass" unique_id=697158922]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_4iqgg")
+amount = 25
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_ybxky")
+draw_pass_1 = SubResource("QuadMesh_rmuma")
+
+[node name="BeamParticles" type="GPUParticles3D" parent="Compass" unique_id=1354533393]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_7ktb7")
+amount = 50
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_n4evg")
+draw_pass_1 = SubResource("QuadMesh_kbp51")
 
 [connection signal="timeout" from="Wait" to="." method="_on_wait_timeout"]

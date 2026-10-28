@@ -17,13 +17,14 @@ Si le monstre le voit, il meurt.
 	- Boussole : Révèle la position du monstre
 	- Carte : Révèle la position des objets à récupérer
 	- Chaussures : Le joueur court plus vite
+	- Petits cailloux : Laisse des traces sous tes pieds
 - [x] Différentes difficultés
 	- Facile
 	- Normal
 	- Difficile
 	- Custom
 - [x] Modèles 3D
-- [ ] Audio
+- [x] Audio
 
 ## Sources
 * Tuto jeu à la première personne : [https://www.youtube.com/watch?v=JwwSDokaCq4](https://www.youtube.com/watch?v=JwwSDokaCq4)
@@ -34,3 +35,4 @@ Si le monstre le voit, il meurt.
 * Tuto pour les lasers : [https://www.youtube.com/watch?v=8QumOFwX9Z0](https://www.youtube.com/watch?v=8QumOFwX9Z0)
 * Code du système de sauvegarde : [https://docs.godotengine.org/en/stable/classes/class_fileaccess.html](https://docs.godotengine.org/en/stable/classes/class_fileaccess.html)
 * Source musique : [https://pixabay.com/fr/music/airs-effrayants-pour-enfants-halloween-spooky-music-620458/](https://pixabay.com/fr/music/airs-effrayants-pour-enfants-halloween-spooky-music-620458/)
+* Source de l'audio : jsfxr

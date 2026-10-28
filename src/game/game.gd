@@ -78,12 +78,9 @@ func generate_grid(size: int, is_complex: bool, objects: int, mcount: int) -> Ar
 		placed += 1
 	
 	placed = 0
-	print(placed < mcount)
 	while placed < mcount:
-		print("loop")
 		var x: int = (randi() % (size - 1)) + 1
 		var y: int = (randi() % (size - 1)) + 1
-		print("monster")
 		if grid[x][y] < 0:
 			continue
 		grid[x][y] = -3

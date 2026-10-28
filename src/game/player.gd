@@ -1,8 +1,6 @@
 extends CharacterBody3D
 
-@export var speed: float = Stats.player_speed
 @export var mouse_sensitivity: float = 0.005
-@export var jump_velocity: float = Stats.player_jump_force
 @export var gravity: float = 9.8
 
 var head: Node3D
@@ -41,14 +39,14 @@ func _physics_process(delta: float) -> void:
 	direction = direction.normalized()
 
 	# mouvement horizontal
-	velocity.x = direction.x * speed * delta
-	velocity.z = direction.z * speed * delta
+	velocity.x = direction.x * Stats.player_speed * delta
+	velocity.z = direction.z * Stats.player_speed * delta
 
 	# gravité et saut
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	elif Input.is_action_just_pressed("jump"):
 		# Autoload.get_node("Jump").play()
-		velocity.y = jump_velocity * delta
+		velocity.y = Stats.player_jump_force * delta
 
 	move_and_slide()

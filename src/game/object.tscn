@@ -2,6 +2,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxpmf"]
 albedo_color = Color(1, 1, 0.26666668, 1)
+emission_enabled = true
+emission = Color(1, 1, 0.26666668, 1)
+emission_energy_multiplier = 2.0
+grow_amount = 5.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2wf1j"]
 radius = 0.25

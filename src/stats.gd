@@ -8,3 +8,9 @@ var initial_collectables: int = 3
 var complex_map: bool = true
 var monster_count: int = 1
 var is_custom: bool = false
+var boosts: Dictionary = {
+	"boot": { "count": 2 },
+	"map": { "count": 2 },
+	"compass": { "count": 2 },
+	"stone": { "count": 2 }
+}

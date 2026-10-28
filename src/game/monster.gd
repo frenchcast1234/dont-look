@@ -42,5 +42,5 @@ func _on_wait_timeout() -> void:
 func _process(delta: float) -> void:
 	if $Head/Vision.is_colliding():
 		var body = $Head/Vision.get_collider()
-		if body.is_in_group("player"):
+		if body and body.is_in_group("player"):
 			game_over.emit()

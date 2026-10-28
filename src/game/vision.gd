@@ -7,11 +7,9 @@ extends RayCast3D
 var tween: Tween
 var beam_radius: float = 0.03
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	desactivate(0) 
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var cast_point
 	force_raycast_update()

@@ -81,28 +81,28 @@ size = Vector2(0.02, 0.02)
 
 [node name="Monster" unique_id=1372328583 instance=ExtResource("1_bjvcb")]
 
-[node name="Body" parent="." index="0" unique_id=350427979]
+[node name="Body" parent="." index="0" unique_id=1973489969]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, -0.5625, 0)
 
-[node name="Right_Arm" parent="." index="1" unique_id=1471087357]
+[node name="Right_Arm" parent="." index="1" unique_id=1963057611]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0.4375, -0.1875, 0)
 
-[node name="Left_Arm" parent="." index="2" unique_id=1398934443]
+[node name="Left_Arm" parent="." index="2" unique_id=515295722]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.4375, -0.1875, 0)
 
-[node name="Left_Leg" parent="." index="3" unique_id=57126899]
+[node name="Left_Leg" parent="." index="3" unique_id=872443227]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, -1, 0)
 
-[node name="Right_Leg" parent="." index="4" unique_id=1336716038]
+[node name="Right_Leg" parent="." index="4" unique_id=648025508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1875, -1, 0)
 
-[node name="Left_Glass" parent="." index="5" unique_id=389009931]
+[node name="Left_Glass" parent="." index="5" unique_id=1322990897]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.1875, 0.6875, -0.09375)
 
-[node name="Right_Glass" parent="." index="6" unique_id=739983424]
+[node name="Right_Glass" parent="." index="6" unique_id=362916706]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.1875, 0.6875, -0.09375)
 
-[node name="Left_Eye" parent="." index="7" unique_id=90218592]
+[node name="Left_Eye" parent="." index="7" unique_id=1834562965]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1875, 0.6875, -0.3125)
 
 [node name="Vision" type="RayCast3D" parent="Left_Eye" index="0" unique_id=54011583]
@@ -132,7 +132,7 @@ lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_rffl4")
 draw_pass_1 = SubResource("QuadMesh_n4evg")
 
-[node name="Right_Eye" parent="." index="8" unique_id=1240654792]
+[node name="Right_Eye" parent="." index="8" unique_id=909209982]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0.6875, -0.3125)
 
 [node name="Vision" type="RayCast3D" parent="Right_Eye" index="0" unique_id=130802203]
@@ -162,5 +162,5 @@ lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_rffl4")
 draw_pass_1 = SubResource("QuadMesh_n4evg")
 
-[node name="Mouth" parent="." index="9" unique_id=127410821]
+[node name="Mouth" parent="." index="9" unique_id=1424026381]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.3125, -0.375)
