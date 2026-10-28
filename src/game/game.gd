@@ -90,7 +90,6 @@ func generate_grid(size: int, is_complex: bool, objects: int, mcount: int) -> Ar
 		placed += 1
 		
 	while true:
-		print("player")
 		var x: int = (randi() % (size - 1)) + 1 + size
 		var y: int = (randi() % (size - 1)) + 1 + size
 		if grid[x][y] < 0:
@@ -108,7 +107,6 @@ func _ready() -> void:
 	create()
 
 func create() -> void:
-	print(Stats.monster_count)
 	for child in $Walls.get_children():
 		child.queue_free()
 	var grid := generate_grid(grid_size, Stats.complex_map, to_collect, Stats.monster_count)
@@ -141,7 +139,6 @@ func create() -> void:
 				)
 				$Objects.add_child(obj)
 			elif grid[i][j] == -3:
-				print("spawn")
 				var obj = monster_scene.instantiate()
 				obj.position = Vector3(
 					i - grid_size,
@@ -154,6 +151,7 @@ func create() -> void:
 					$Player/Head.target = obj.global_position
 					$CanvasLayer/GameOver.visible = true
 					$CanvasLayer/GameOver/VBoxContainer/Rounds.text = "Rounds: %d" % rounds
+					Autoload.get_node("Death").play()
 					get_tree().paused = true
 				)
 				$Monsters.add_child(obj)
@@ -169,6 +167,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("obj"):
 		body.queue_free()
 		collected += 1
+		Autoload.get_node("Object").play()
 		$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
 		if collected >= to_collect:
 			if rounds > best_score and not Stats.is_custom:

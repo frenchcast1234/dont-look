@@ -69,3 +69,4 @@ func _on_ok_pressed() -> void:
 				complex_map,
 				monster_count
 			)
+	# Autoload.get_node("Click").play()

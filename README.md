@@ -1,4 +1,4 @@
-# Baudo Game Jam 2026 : Don't look
+# Baudo Game Jam 2026 : Don't look at me
 
 ## Mon idée
 Le joueur spawn dans un labyrinthe généré aléatoirement.
@@ -32,3 +32,5 @@ Si le monstre le voit, il meurt.
 * Police d'écriture Creepster : [https://fonts.google.com/specimen/Creepster?preview.script=Latn](https://fonts.google.com/specimen/Creepster?preview.script=Latn)
 * Atmosphere : [https://dirtemagic.itch.io/stylized-night-atmosphere-for-godot-4](https://dirtemagic.itch.io/stylized-night-atmosphere-for-godot-4)
 * Tuto pour les lasers : [https://www.youtube.com/watch?v=8QumOFwX9Z0](https://www.youtube.com/watch?v=8QumOFwX9Z0)
+* Code du système de sauvegarde : [https://docs.godotengine.org/en/stable/classes/class_fileaccess.html](https://docs.godotengine.org/en/stable/classes/class_fileaccess.html)
+* Source musique : [https://pixabay.com/fr/music/airs-effrayants-pour-enfants-halloween-spooky-music-620458/](https://pixabay.com/fr/music/airs-effrayants-pour-enfants-halloween-spooky-music-620458/)

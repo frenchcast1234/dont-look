@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://codn53gjwdlun"]
+
+[ext_resource type="AudioStream" uid="uid://phhvu8pgaksc" path="res://assets/audio/sound4stock-halloween-spooky-music-620458.mp3" id="1_q3vph"]
+[ext_resource type="AudioStream" uid="uid://cfpyo2ti1cdkn" path="res://assets/audio/jump.wav" id="2_jycbs"]
+[ext_resource type="AudioStream" uid="uid://cicv3huydyfuh" path="res://assets/audio/explosion.wav" id="3_6wug8"]
+[ext_resource type="AudioStream" uid="uid://t3ybgouuof7i" path="res://assets/audio/pickupCoin.wav" id="4_x72qk"]
+[ext_resource type="AudioStream" uid="uid://byuv6cvo16jsg" path="res://assets/audio/blipSelect.wav" id="5_4d33m"]
+
+[node name="Autoload" type="Node" unique_id=1369239494]
+process_mode = 3
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1427668666]
+process_mode = 3
+stream = ExtResource("1_q3vph")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="Jump" type="AudioStreamPlayer" parent="." unique_id=519910227]
+stream = ExtResource("2_jycbs")
+
+[node name="Death" type="AudioStreamPlayer" parent="." unique_id=1253144949]
+stream = ExtResource("3_6wug8")
+
+[node name="Object" type="AudioStreamPlayer" parent="." unique_id=364740730]
+stream = ExtResource("4_x72qk")
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=359627572]
+stream = ExtResource("5_4d33m")

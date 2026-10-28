@@ -11,13 +11,17 @@ func _ready() -> void:
 	$Popup2.visible = false
 
 func _on_play_button_pressed() -> void:
+	# Autoload.get_node("Click").play()
 	$Popup.visible = true
 
 func _on_easy_pressed() -> void:
+	# Autoload.get_node("Click").play()
 	get_tree().change_scene_to_file("res://src/game/game.tscn")
 func _on_normal_pressed() -> void:
+	# Autoload.get_node("Click").play()
 	get_tree().change_scene_to_file("res://src/game/game.tscn")
 func _on_difficult_pressed() -> void:
+	# Autoload.get_node("Click").play()
 	get_tree().change_scene_to_file("res://src/game/game.tscn")
 func _on_custom_pressed() -> void:
 	$Popup2.visible = true

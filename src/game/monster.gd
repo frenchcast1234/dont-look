@@ -7,7 +7,6 @@ var tween: Tween
 var last: Array
 
 func _ready() -> void:
-	print(SPEED)
 	$Wait.wait_time = SPEED + 0.005
 	await get_tree().create_timer(1).timeout
 	$Wait.start()

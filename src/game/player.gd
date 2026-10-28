@@ -48,6 +48,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	elif Input.is_action_just_pressed("jump"):
+		# Autoload.get_node("Jump").play()
 		velocity.y = jump_velocity * delta
 
 	move_and_slide()
