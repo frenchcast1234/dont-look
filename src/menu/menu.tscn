@@ -277,6 +277,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "Custom"
 
 [node name="Popup2" type="Panel" parent="." unique_id=950231977]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -359,6 +360,23 @@ theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "Done"
+
+[node name="Pseudo" type="Label" parent="." unique_id=194977441]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -403.0
+offset_top = -95.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_font_sizes/font_size = 64
+text = "frenchcast1234"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Easy" to="." method="_on_easy_pressed"]

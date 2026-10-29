@@ -1,5 +1,7 @@
-# Baudo Game Jam 2026 
-# Don't look at me
+<h1>
+Dev&Play Jam 2026<br>
+Don't look at me
+</h1>
 
 ## Le principe du jeu
 * ZQSD pour se déplacer.
