@@ -14,3 +14,4 @@ var boosts: Dictionary = {
 	"compass": { "count": 2, "active": false },
 	"stone": { "count": 2, "active": false }
 }
+var boosts_boost: int = 2

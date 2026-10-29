@@ -38,7 +38,9 @@ func _on_popup_2_done(
 	initial_map_size: int, 
 	initial_collectables: int, 
 	complex_map: bool, 
-	monster_count: int
+	monster_count: int,
+	initial_boosts_count: int,
+	boosts_boost: int
 ) -> void:
 	Stats.monster_speed = monster_speed
 	Stats.player_speed = player_speed
@@ -48,4 +50,7 @@ func _on_popup_2_done(
 	Stats.complex_map = complex_map
 	Stats.monster_count = monster_count
 	Stats.is_custom = true
+	for x in Stats.boosts.keys():
+		Stats.boosts[x]["count"] = initial_boosts_count
+	Stats.boosts_boost = boosts_boost
 	get_tree().change_scene_to_file("res://src/game/game.tscn")

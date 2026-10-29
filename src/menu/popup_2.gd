@@ -6,7 +6,9 @@ signal done(
 	initial_map_size: int,
 	initial_collectables: int,
 	complex_map: bool,
-	monster_count: int
+	monster_count: int,
+	initial_boosts_count: int,
+	boosts_boost: int
 )
 
 var step: int = 0
@@ -17,6 +19,8 @@ var initial_map_size: int
 var initial_collectables: int
 var complex_map: bool
 var monster_count: int
+var initial_boosts_count: int
+var boosts_boost: int
 
 func _on_ok_pressed() -> void:
 	step += 1
@@ -60,6 +64,16 @@ func _on_ok_pressed() -> void:
 			%Setting.text = "Choose the monster count"
 		7:
 			monster_count = %HSlider.value
+			%HSlider.min_value = 0
+			%HSlider.max_value = 10
+			%HSlider.value = 2
+			%Setting.text = "Choose initial boosts count"
+		8: 
+			initial_boosts_count = %HSlider.value
+			%HSlider.value = 2
+			%Setting.text = "Choose boosts count you get"
+		_: 
+			boosts_boost = %HSlider.value
 			done.emit(
 				monster_speed,
 				player_speed,
@@ -67,6 +81,8 @@ func _on_ok_pressed() -> void:
 				initial_map_size,
 				initial_collectables,
 				complex_map,
-				monster_count
+				monster_count,
+				initial_boosts_count,
+				boosts_boost
 			)
 	# Autoload.get_node("Click").play()

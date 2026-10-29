@@ -149,6 +149,10 @@ func create() -> void:
 					$CanvasLayer/GameOver.visible = true
 					$CanvasLayer/GameOver/VBoxContainer/Rounds.text = "Rounds: %d" % rounds
 					Autoload.get_node("Death").play()
+					Stats.boosts["boot"]["active"] = false
+					Stats.boosts["map"]["active"] = false
+					Stats.boosts["compass"]["active"] = false
+					Stats.boosts["stone"]["active"] = false
 					get_tree().paused = true
 				)
 				$Monsters.add_child(obj)
@@ -177,4 +181,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			get_tree().paused = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
+			for x in range(Stats.boosts_boost):
+				Stats.boosts[Stats.boosts.keys()[randi() % Stats.boosts.size()]]["count"] += 1
+			Stats.boosts["boot"]["active"] = false
+			Stats.boosts["map"]["active"] = false
+			Stats.boosts["compass"]["active"] = false
+			Stats.boosts["stone"]["active"] = false
 			create()
