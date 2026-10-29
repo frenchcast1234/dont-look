@@ -13,7 +13,7 @@ Si le monstre le voit, il meurt.
 - [x] Monstre
 - [x] Système d'étapes
 - [x] Faire un menu
-- [ ] Objets bonus
+- [x] Objets bonus
 	- Boussole : Révèle la position du monstre
 	- Carte : Révèle la position des objets à récupérer
 	- Chaussures : Le joueur court plus vite
