@@ -153,6 +153,7 @@ func create() -> void:
 					Stats.boosts["map"]["active"] = false
 					Stats.boosts["compass"]["active"] = false
 					Stats.boosts["stone"]["active"] = false
+					Stats.speed_mult = 1
 					get_tree().paused = true
 				)
 				$Monsters.add_child(obj)
@@ -187,4 +188,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			Stats.boosts["map"]["active"] = false
 			Stats.boosts["compass"]["active"] = false
 			Stats.boosts["stone"]["active"] = false
+			Stats.speed_mult = 1
 			create()

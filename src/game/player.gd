@@ -39,8 +39,8 @@ func _physics_process(delta: float) -> void:
 	direction = direction.normalized()
 
 	# mouvement horizontal
-	velocity.x = direction.x * Stats.player_speed * delta
-	velocity.z = direction.z * Stats.player_speed * delta
+	velocity.x = direction.x * Stats.player_speed * Stats.speed_mult * delta
+	velocity.z = direction.z * Stats.player_speed * Stats.speed_mult * delta
 
 	# gravité et saut
 	if not is_on_floor():

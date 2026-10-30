@@ -1,6 +1,5 @@
 extends Panel
 
-var speed = Stats.player_speed
 @export var stone: PackedScene
 var last_stone_frame: int = 0
 
@@ -16,7 +15,7 @@ func _process(delta: float) -> void:
 		if Stats.boosts["boot"]["count"] <= 0 or Stats.boosts["boot"]["active"]: return
 		Stats.boosts["boot"]["count"] -= 1
 		Stats.boosts["boot"]["active"] = true
-		Stats.player_speed *= 1.2
+		Stats.speed_mult = 1.2
 		$SpeedTimer.start($SpeedTimer.wait_time)
 	elif Input.is_action_just_pressed("inventory_2"):
 		if Stats.boosts["map"]["count"] <= 0 or Stats.boosts["map"]["active"]: return
@@ -44,7 +43,7 @@ func _process(delta: float) -> void:
 
 func _on_speed_timer_timeout() -> void:
 	Stats.boosts["boot"]["active"] = false
-	Stats.player_speed = speed
+	Stats.speed_mult = 1
 
 func _on_map_timer_timeout() -> void:
 	Stats.boosts["map"]["active"] = false

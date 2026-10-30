@@ -15,3 +15,4 @@ var boosts: Dictionary = {
 	"stone": { "count": 2, "active": false }
 }
 var boosts_boost: int = 2
+var speed_mult: int = 1
