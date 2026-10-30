@@ -29,7 +29,7 @@ func _on_custom_pressed() -> void:
 
 func _process(delta: float) -> void:
 	if not $Popup2.visible: return
-	$Popup2/VBoxContainer/Label2.text = str($Popup2/VBoxContainer/HSlider.value)
+	$Popup2/Panel/VBoxContainer/Label2.text = str($Popup2/Panel/VBoxContainer/HSlider.value)
 
 func _on_popup_2_done(
 	monster_speed: float, 
@@ -54,3 +54,9 @@ func _on_popup_2_done(
 		Stats.boosts[x]["count"] = initial_boosts_count
 	Stats.boosts_boost = boosts_boost
 	get_tree().change_scene_to_file("res://src/game/game.tscn")
+
+func _on_done_pressed() -> void:
+	$InfoPopup.visible = false
+
+func _on_info_button_pressed() -> void:
+	$InfoPopup.visible = true
