@@ -18,7 +18,6 @@ func Get(key: String) -> Variant:
 		return null
 	var content = file.get_as_text()
 	var json = JSON.parse_string(content)
-	print(json)
 	if json.has(key):
 		return json[key]
 	else:

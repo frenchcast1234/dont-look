@@ -1,16 +1,20 @@
 extends Control
 
 func _ready() -> void:
+	$Popup.visible = false
+	$Popup2.visible = false
+	$InfoPopup.visible = false
 	if Storage.Get("best_score") == null:
 		Storage.Set("best_score", 0)
 	if Storage.Get("music") == null:
 		Storage.Set("music", true)
 	if Storage.Get("sfx") == null:
 		Storage.Set("sfx", true)
+	if Storage.Get("tuto") == null:
+		Storage.Set("tuto", true)
+		$InfoPopup.visible = true
 	var content = Storage.Get("best_score")
 	$Best.text = "Best score: %d" % int(content)
-	$Popup.visible = false
-	$Popup2.visible = false
 
 func _on_play_button_pressed() -> void:
 	# Autoload.get_node("Click").play()

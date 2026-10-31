@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://ikxywhonb075" path="res://src/game/stone.tscn" id="10_etvrb"]
 [ext_resource type="Texture2D" uid="uid://cuvox0xg06d03" path="res://assets/img/map.svg" id="10_ueio8"]
 [ext_resource type="Texture2D" uid="uid://ddv53ujidhrg5" path="res://assets/img/compass.svg" id="11_etvrb"]
+[ext_resource type="Script" uid="uid://bmjq8ac2bdshx" path="res://src/game/pause.gd" id="15_80fip"]
+[ext_resource type="Script" uid="uid://bj5muocvpgmvt" path="res://src/menu/audio_buttons.gd" id="15_xniy2"]
 
 [sub_resource type="Environment" id="Environment_6kr85"]
 background_mode = 2
@@ -75,6 +77,30 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxpmf"]
 bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80fip"]
+bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.14509805, 0.12941177, 0.16470589, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvpot"]
+bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.29411766, 0.105882354, 0.050980393, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
 
 [node name="Game" type="Node3D" unique_id=1433563188]
 script = ExtResource("1_qnjlk")
@@ -225,6 +251,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "    Menu    "
 
 [node name="Inventory" type="Panel" parent="CanvasLayer" unique_id=831509824]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -390,9 +417,122 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
+[node name="Pause" type="Control" parent="CanvasLayer" unique_id=813355705]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_80fip")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause" unique_id=1751448198]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = -306.5
+offset_right = 815.0
+offset_bottom = 306.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/Pause/VBoxContainer" unique_id=1361592748]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 200
+theme_override_font_sizes/normal_font_size = 240
+bbcode_enabled = true
+text = "[shake rate=60.0 level=15 connected=1]Game paused![/shake]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="CanvasLayer/Pause/VBoxContainer" unique_id=1265934713]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Rounds" type="Label" parent="CanvasLayer/Pause/VBoxContainer" unique_id=1960490330]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 128
+text = "Rounds: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioButtons" type="VBoxContainer" parent="CanvasLayer/Pause" unique_id=1834394241]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -288.0
+offset_right = 563.0
+offset_bottom = -20.0
+grow_vertical = 0
+alignment = 2
+script = ExtResource("15_xniy2")
+
+[node name="Music" type="Button" parent="CanvasLayer/Pause/AudioButtons" unique_id=1739488576]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_80fip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cvpot")
+text = "Music: yes"
+
+[node name="SFX" type="Button" parent="CanvasLayer/Pause/AudioButtons" unique_id=4231566]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_80fip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cvpot")
+text = "SFX: yes"
+
+[node name="Button" type="Button" parent="CanvasLayer/Pause" unique_id=1680631414]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -376.5
+offset_top = -240.0
+offset_right = 376.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
+text = "    Menu    "
+
 [connection signal="body_entered" from="Player/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/GameOver/Button" to="CanvasLayer/GameOver" method="_on_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/Inventory/SpeedTimer" to="CanvasLayer/Inventory" method="_on_speed_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/Inventory/MapTimer" to="CanvasLayer/Inventory" method="_on_map_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/Inventory/CompassTimer" to="CanvasLayer/Inventory" method="_on_compass_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/Inventory/StoneTimer" to="CanvasLayer/Inventory" method="_on_stone_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Pause/AudioButtons/Music" to="CanvasLayer/Pause/AudioButtons" method="_on_music_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/AudioButtons/SFX" to="CanvasLayer/Pause/AudioButtons" method="_on_sfx_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/Button" to="CanvasLayer/Pause" method="_on_button_pressed"]

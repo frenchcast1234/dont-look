@@ -7,6 +7,7 @@ Don't look at me
 * ZQSD pour se déplacer.
 * Le joueur dois récupérer toutes les orbes avant que le monstre ne le voit.
 * 1 2 3 4 pour activer les boosts.
+* E pour toggle le menu pause
 
 ## Sources
 * Tuto jeu à la première personne : [https://www.youtube.com/watch?v=JwwSDokaCq4](https://www.youtube.com/watch?v=JwwSDokaCq4)
