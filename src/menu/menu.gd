@@ -1,11 +1,13 @@
 extends Control
 
 func _ready() -> void:
-	if not FileAccess.file_exists("user://save_game.dat"):
-		var file = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
-		file.store_string("0")
-	var file = FileAccess.open("user://save_game.dat", FileAccess.READ)
-	var content = file.get_as_text()
+	if Storage.Get("best_score") == null:
+		Storage.Set("best_score", 0)
+	if Storage.Get("music") == null:
+		Storage.Set("music", true)
+	if Storage.Get("sfx") == null:
+		Storage.Set("sfx", true)
+	var content = Storage.Get("best_score")
 	$Best.text = "Best score: %d" % int(content)
 	$Popup.visible = false
 	$Popup2.visible = false

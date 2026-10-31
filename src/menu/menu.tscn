@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://chqgmt0161ilu" path="res://src/menu/menu.gd" id="1_ps8b8"]
 [ext_resource type="Script" uid="uid://jmfrxq6v86ml" path="res://src/menu/popup_2.gd" id="2_sblgy"]
 [ext_resource type="Script" uid="uid://cyktl2pw36mdb" path="res://src/menu/info_popup.gd" id="3_56xr1"]
+[ext_resource type="Script" uid="uid://bj5muocvpgmvt" path="res://src/menu/audio_buttons.gd" id="4_yvra3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wf1j"]
 bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
@@ -555,6 +556,39 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "<"
 
+[node name="AudioButtons" type="VBoxContainer" parent="." unique_id=457096109]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -360.0
+offset_right = 543.0
+grow_vertical = 0
+alignment = 2
+script = ExtResource("4_yvra3")
+
+[node name="Music" type="Button" parent="AudioButtons" unique_id=1875749083]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
+text = "Music: yes"
+
+[node name="SFX" type="Button" parent="AudioButtons" unique_id=587789849]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
+theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
+theme_override_constants/outline_size = 70
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
+text = "SFX: yes"
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="Popup/Panel/VBoxContainer/HBoxContainer/Easy" to="." method="_on_easy_pressed"]
@@ -566,3 +600,5 @@ text = "<"
 [connection signal="pressed" from="InfoPopup/Panel/Done" to="." method="_on_done_pressed"]
 [connection signal="pressed" from="InfoPopup/Panel/Next" to="InfoPopup/Panel" method="_on_next_pressed"]
 [connection signal="pressed" from="InfoPopup/Panel/Last" to="InfoPopup/Panel" method="_on_last_pressed"]
+[connection signal="pressed" from="AudioButtons/Music" to="AudioButtons" method="_on_music_pressed"]
+[connection signal="pressed" from="AudioButtons/SFX" to="AudioButtons" method="_on_sfx_pressed"]

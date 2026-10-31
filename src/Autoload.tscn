@@ -14,16 +14,21 @@ process_mode = 3
 stream = ExtResource("1_q3vph")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="." unique_id=519910227]
 stream = ExtResource("2_jycbs")
+bus = &"SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="." unique_id=1253144949]
 stream = ExtResource("3_6wug8")
+bus = &"SFX"
 
 [node name="Object" type="AudioStreamPlayer" parent="." unique_id=364740730]
 stream = ExtResource("4_x72qk")
+bus = &"SFX"
 
 [node name="Click" type="AudioStreamPlayer" parent="." unique_id=359627572]
 stream = ExtResource("5_4d33m")
+bus = &"SFX"

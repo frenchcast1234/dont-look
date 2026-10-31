@@ -97,9 +97,7 @@ func generate_grid(size: int, is_complex: bool, objects: int, mcount: int) -> Ar
 	return grid
 
 func _ready() -> void:
-	var file = FileAccess.open("user://save_game.dat", FileAccess.READ)
-	var content = file.get_as_text()
-	best_score = int(content)
+	best_score = Storage.Get("best_score")
 	$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
 	create()
 
@@ -173,8 +171,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		$CanvasLayer/Collected.text = "%d/%d" % [collected, to_collect]
 		if collected >= to_collect:
 			if rounds > best_score and not Stats.is_custom:
-				var file = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
-				file.store_string(str(rounds))
+				Storage.Set("best_score", rounds)
 			grid_size += 5
 			rounds += 1
 			to_collect += 1
