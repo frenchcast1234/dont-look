@@ -178,6 +178,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 				Storage.Set("best_score", rounds)
 			grid_size += 5
 			rounds += 1
+			if rounds % 3 == 0:
+				Stats.monster_count += 1
 			to_collect += 1
 			collected = 0
 			get_tree().paused = false
