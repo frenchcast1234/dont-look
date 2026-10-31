@@ -104,6 +104,8 @@ func _ready() -> void:
 func create() -> void:
 	for child in $Walls.get_children():
 		child.queue_free()
+	for child in $Monsters.get_children():
+		child.queue_free()
 	var grid := generate_grid(grid_size, Stats.complex_map, to_collect, Stats.monster_count)
 	$Ground/CSGBox3D.size = Vector3(
 		grid_size * 2 + 1,
