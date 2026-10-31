@@ -17,6 +17,18 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwqk2"]
+bg_color = Color(0.15686275, 0.1764706, 0.22352941, 1)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.29411766, 0.105882354, 0.050980393, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sblgy"]
 bg_color = Color(0.20392157, 0.21568628, 0.26666668, 1)
 border_width_left = 30
@@ -97,11 +109,13 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "        Play        "
 
@@ -198,11 +212,13 @@ offset_right = -20.0
 offset_bottom = 220.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "?"
 
@@ -265,11 +281,13 @@ alignment = 1
 custom_minimum_size = Vector2(753, 210)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "Easy"
 
@@ -281,11 +299,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(753, 210)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "Normal"
 
@@ -300,11 +320,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(753, 210)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "Difficult"
 
@@ -316,16 +338,17 @@ layout_mode = 2
 custom_minimum_size = Vector2(753, 210)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "Custom"
 
 [node name="Popup2" type="Control" parent="." unique_id=1734717432]
-visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -411,13 +434,15 @@ layout_mode = 2
 custom_minimum_size = Vector2(753, 210)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
-text = "Done"
+text = "OK"
 
 [node name="InfoPopup" type="Control" parent="." unique_id=1479432945]
 visible = false
@@ -506,13 +531,15 @@ offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
-text = "Done"
+text = "OK"
 
 [node name="Next" type="Button" parent="InfoPopup/Panel" unique_id=1720588424]
 layout_mode = 1
@@ -528,11 +555,13 @@ offset_bottom = 100.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = ">"
 
@@ -548,11 +577,13 @@ offset_right = 100.0
 offset_bottom = 100.0
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "<"
 
