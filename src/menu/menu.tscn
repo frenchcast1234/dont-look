@@ -199,7 +199,10 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
 theme_override_font_sizes/font_size = 64
-text = "frenchcast1234"
+text = "made by : 
+frenchcast1234"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="InfoButton" type="Button" parent="." unique_id=1455005171]
 layout_mode = 1
@@ -349,6 +352,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "Custom"
 
 [node name="Popup2" type="Control" parent="." unique_id=1734717432]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
