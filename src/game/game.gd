@@ -152,6 +152,8 @@ func create() -> void:
 					Stats.boosts["compass"]["active"] = false
 					Stats.boosts["stone"]["active"] = false
 					Stats.speed_mult = 1
+					if rounds > best_score and not Stats.is_custom:
+						Storage.Set("best_score", rounds)
 					get_tree().paused = true
 				)
 				$Monsters.add_child(obj)
