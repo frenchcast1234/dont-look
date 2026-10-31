@@ -251,7 +251,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "    Menu    "
 
 [node name="Inventory" type="Panel" parent="CanvasLayer" unique_id=831509824]
-visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

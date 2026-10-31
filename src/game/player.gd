@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-@export var mouse_sensitivity: float = 0.005
-@export var gravity: float = 9.8
+var mouse_sensitivity: float = 0.005
+var gravity: float = 9.8
 
 var head: Node3D
 var pitch: float = 0.0
@@ -10,13 +10,15 @@ func _ready() -> void:
 	head = $Head
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$MeshInstance3D.visible = false
+	if OS.has_feature("web"):
+		mouse_sensitivity = 0.003
 
 func _unhandled_input(event) -> void:
 	if event is InputEventMouseMotion:
 		# rotation horizontale du corps
-		rotate_y(-event.relative.x * mouse_sensitivity)
+		rotate_y(-event.screen_relative.x * mouse_sensitivity)
 		# rotation verticale de la tête
-		pitch = clamp(pitch - event.relative.y * mouse_sensitivity, deg_to_rad(-89), deg_to_rad(89))
+		pitch = clamp(pitch - event.screen_relative.y * mouse_sensitivity, deg_to_rad(-89), deg_to_rad(89))
 		head.rotation.x = pitch
 	elif event is InputEventKey and event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

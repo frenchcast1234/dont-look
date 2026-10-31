@@ -605,22 +605,26 @@ script = ExtResource("4_yvra3")
 [node name="Music" type="Button" parent="AudioButtons" unique_id=1875749083]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "Music: yes"
 
 [node name="SFX" type="Button" parent="AudioButtons" unique_id=587789849]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.40784314, 1)
+theme_override_colors/font_pressed_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_hover_color = Color(0.9764706, 0.7764706, 0.39607844, 1)
 theme_override_colors/font_outline_color = Color(0.22352941, 0.03529412, 0.015686275, 1)
 theme_override_constants/outline_size = 70
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_2wf1j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xwqk2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sblgy")
 text = "SFX: yes"
 
